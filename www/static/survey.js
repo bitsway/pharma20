@@ -284,7 +284,7 @@ function check_user() {
 														
 														var product_qty='';																		
 														//product_tbl_order+='<tr  style="border-bottom:1px solid #D2EEE9;"><td width="40%" style="text-align:center; padding-left:5px;"><input type="number" id="order_qty'+product_id2+'" value="'+product_qty+'" placeholder="0" ><input type="hidden" id="order_price'+product_id2+'" value="'+product_price+'" ><input type="hidden" id="order_id'+product_id2+'" value="'+product_id2.toUpperCase()+'" placeholder="qty" ><input type="hidden" id="order_name'+product_id2+'" value="'+product_name2.toUpperCase()+'" placeholder="qty" ></td><td width="60%" style="text-align:left;">&nbsp;&nbsp;'+product_name2.toUpperCase()+'</td></tr>';
-														product_tbl_order=product_tbl_order+'<tr style="border-bottom:1px solid #D2EEE9;"><td width="60px" style="text-align:center; padding-left:5px;"><input onBlur="getOrderData_keyup(\''+product_id2+'\')" type="number" id="order_qty'+product_id2+'"  value="'+product_qty+'" placeholder="0" ><input type="hidden" id="order_id'+product_id2+'" value="'+product_id2+'" ><input type="hidden" id="order_price'+product_id2+'" value="'+product_price+'" ><input type="hidden" id="order_name'+product_id2.toUpperCase()+'" value="'+product_name2.toUpperCase()+'" placeholder="qty" ></td><td  style="text-align:left;">'+'<font id="'+ product_id2 +'" onClick="tr_item(\''+product_id2+'\')" >'+ product_name2.toUpperCase()+'</font></td></tr>';
+														product_tbl_order=product_tbl_order+'<tr style="border-bottom:1px solid #D2EEE9;"><td width="50px" style="text-align:center; padding-left:5px;"><input onBlur="getOrderData_keyup(\''+product_id2+'\')" type="number" id="order_qty'+product_id2+'"  value="'+product_qty+'" placeholder="0" ><input type="hidden" id="order_id'+product_id2+'" value="'+product_id2+'" ><input type="hidden" id="order_price'+product_id2+'" value="'+product_price+'" ><input type="hidden" id="order_name'+product_id2.toUpperCase()+'" value="'+product_name2.toUpperCase()+'" placeholder="qty" ></td><td  style="text-align:left;">'+'<font id="'+ product_id2 +'" onClick="tr_item(\''+product_id2+'\')" >'+ product_name2.toUpperCase()+'</font></td></tr>';
 														product_tbl_order=product_tbl_order+'<tr style="background-color:#999; height:1px"><td></td><td ></td></tr>';
 										
 													}
@@ -745,8 +745,8 @@ function marketNext() {
 			
 			//visitMarketStr
 			var marketNameId=market_name.split('-');
-			var market_Id=marketNameId[1];
-			
+			//var market_Id=marketNameId[1];
+			var market_Id=market_name.replace(marketNameId[0]+"-","");
 			//http://127.0.0.1:8000/lscmreporting/syncmobile/getMarketClientList?cid=LSCRM&rep_id=1001&rep_pass=123&synccode=7048&market_id=M000003
 			// ajax-------
 			$.ajax({
@@ -852,7 +852,12 @@ function marketRetailerNext() {
 			$("#btn_unschedule_market_ret").hide();
 			$("#wait_image_unschedule_market_ret").show();		
 			
-			visitClientId=visit_client.split('-')[1]
+			visitClientId_list=visit_client.split('-')
+			
+			
+			
+			var visitClientId=visit_client.replace(visitClientId_list[0]+"-","");
+			
 			
 			//alert(localStorage.base_url+'getClientInfo?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&client_id='+visitClientId);
    			

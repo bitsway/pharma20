@@ -498,7 +498,7 @@
                 </div>-->
                  
                 </div>	
-                <div data-theme="c" data-role="footer" data-position="fixed"></div>			
+                <!--<div data-theme="c" data-role="footer" data-position="fixed"></div>	-->		
             </div>
 		
 
@@ -532,7 +532,7 @@
             </div>
 			
         <!-- ==========footer====== -->	
-        <div data-theme="c" data-role="footer" data-position="fixed"></div>
+        <!--<div data-theme="c" data-role="footer" data-position="fixed"></div>-->
         
         </div>		
 
@@ -851,7 +851,7 @@
                 
             </div><!--/cont-->
 			
-			<div data-theme="c" data-role="footer" data-position="fixed"></div>
+			<!--<div data-theme="c" data-role="footer" data-position="fixed"></div>-->
 			
 			<!--panel-->	
 			
@@ -1116,8 +1116,8 @@
                <!-- <h3>Order</h3>-->
                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr>
-                    <td align="left"><a data-role="button" href="#page_visit"  ><img src="back.png"></a></td>
-                    <td width="50%"> <input type="text" data-iconpos="right" name="item_search" id="item_search"  ></td>
+                    <!--<td align="left"><a data-role="button" href="#page_visit"  ><img src="back.png"></a></td>-->
+                    <td width="50%"><input type="text" data-iconpos="right" name="item_search" id="item_search"  ></td>
                     <td width="10%px"><a data-role="button" onClick="search_item();" style="height:15px" ><img src="search.png"></a></td>
                     <td align="right"><a data-role="button" onClick="getOrderData();cart_data()" ><img src="next.png"></a>&nbsp;&nbsp;</td>
                   </tr>
@@ -1161,8 +1161,9 @@
 			
 			
 			<div data-theme="c" data-role="footer" data-position="fixed">
-			
-			</div>
+            
+           &nbsp; <a data-role="button" href="#page_visit"  ><img src="back.png"></a>
+            </div>
 			
 		 </div><!--/page-->
 
@@ -1444,7 +1445,8 @@
 			<h3>Success</h3>
 	  </div>
 		<div data-role="content">
-        	<div>Submitted Successfully</div>		
+        	<div style="background-image:url(result_back.png); background-repeat:no-repea; width:300px; height:200px; color:#FFF; font-size:16px; font-weight:bold"  id="visit_result" align="center"></br></br></br>Submitted Successfully</div>
+        	<!--<div>Submitted Successfully</div>	-->	
             
            <!-- <a data-role="button" onClick="getOtherOutlet();" >Other Outlet</a>-->
             
