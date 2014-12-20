@@ -26,6 +26,7 @@ function onSuccess(position) {
 	$("#lat_p").val(position.coords.latitude);
 	$("#long_p").val(position.coords.longitude);
 	
+	$("#errorChkVSubmit").html('');
 	$("#checkLocation").html('Location Confirmed');
 	$("#checkLocationProfileUpdate").html('Location Confirmed');	
 }
@@ -60,6 +61,11 @@ function cancelVisitPage(){
 	localStorage.scheduled_date=""
 	localStorage.visit_client=""
 	
+	localStorage.productListStr='';
+	localStorage.product_tbl_cart='';
+	cancel_cart();
+	
+	
 	var url = "#pageHome";
 	$.mobile.navigate(url);
 }
@@ -81,6 +87,7 @@ function clear_autho(){
 		localStorage.synccode='';
 		localStorage.marketListStr='';
 		localStorage.productListStr='';
+		localStorage.product_tbl_cart='';
 		localStorage.marchandizingItem='';
 		localStorage.distributorListStr='';	
 		localStorage.synced=''
@@ -113,7 +120,6 @@ function clear_autho(){
 		localStorage.marketInfoStr=''
 		localStorage.marketInfoSubmitStr=''
 		localStorage.productOrderStr=''
-		localStorage.product_tbl_cart=''
 		localStorage.marchandizingInfoStr=''
 		
 		localStorage.visit_plan_marketlist_combo=''
@@ -179,7 +185,72 @@ function check_user() {
 	var base_url='';
 	var photo_url='';
 	
-	
+	localStorage.base_url='';
+		localStorage.photo_url='';
+		localStorage.photo_submit_url='';
+		
+		//localStorage.cid='';
+//		localStorage.user_id='';
+//		localStorage.user_pass='';
+		//localStorage.synccode='';
+		localStorage.marketListStr='';
+		localStorage.productListStr='';
+		localStorage.product_tbl_cart='';
+		localStorage.marchandizingItem='';
+		localStorage.distributorListStr='';	
+	//	localStorage.synced=''
+		
+		localStorage.client_string=''	
+		localStorage.visit_client=''
+		
+		localStorage.visit_type=''
+		localStorage.scheduled_date=''
+		localStorage.visitMarketStr=''
+		localStorage.visit_distributor_nameid=''
+		localStorage.marchandizingStr=''
+		localStorage.clientProfileStr=''
+		
+			
+		localStorage.product_tbl_str=''
+		
+		localStorage.product_tbl_del_str=''
+		
+		localStorage.distributor_name=''
+		localStorage.delivery_date=''
+		localStorage.dis_client_string=''
+		
+		localStorage.plan_market=''
+		localStorage.plan_date=''
+		
+		localStorage.m_plan_client_string=''
+		localStorage.plan_ret_name=''
+		
+		localStorage.marketInfoStr=''
+		localStorage.marketInfoSubmitStr=''
+		localStorage.productOrderStr=''
+		localStorage.marchandizingInfoStr=''
+		
+		localStorage.visit_plan_marketlist_combo=''
+		localStorage.visit_plan_client_cmb_list=''
+		localStorage.delivery_distributor_cmb_list=''
+		localStorage.delivery_retailer_cmb_list=''
+		localStorage.market_cmb_list_cp=''
+		localStorage.unschedule_market_cmb_id=''
+		
+		localStorage.profile_m_client_org_id=''
+		
+		//----------
+		localStorage.campaign_string=''	
+		localStorage.visit_camp_list_str=''
+		localStorage.visit_camp_submit_str=''
+		//------
+		localStorage.brand_list_string=''
+		
+		localStorage.visit_page=""
+		
+		localStorage.region_string=""
+		
+		localStorage.payment_mode=""
 	//-----
 	
 	if (user_id=="" || user_id==undefined || user_pass=="" || user_pass==undefined){
@@ -276,7 +347,7 @@ function check_user() {
 													
 													//------------ Order Item list								
 													//alert (productList);
-													var product_tbl_order='<table border="0" id="order_tbl" cellpadding="0" cellspacing="0" style="border-radius:5px;">';
+													var product_tbl_order='<table width="100%" border="0" id="order_tbl" cellpadding="0" cellspacing="0" style="border-radius:5px;">';
 													for (var j=0; j < productLength; j++){
 														var productArray2 = productList[j].split('<fd>');
 														var product_id2=productArray2[0];	
@@ -1282,37 +1353,7 @@ function getOrderData_keyup(product_id){
 		
 	//	------------------------------------------------------
 	
-	
-	
-	//var productList2=localStorage.productListStr.split('<rd>');
-//	var productLength2=productList2.length;
-//	
-//	var productOrderStr='';
-//	//alert(productLength2)
-//	for (var i=0; i < productLength2; i++){
-//		var productArray2 = productList2[i].split('<fd>');
-//		var product_id=productArray2[0];	
-//		
-//		var pid=$("#order_id"+product_id).val();
-//		var pname=$("#order_name"+product_id).val();
-//		var pqty=$("#order_qty"+product_id).val();
-//		
-//		if (pqty!='' && eval(pqty) > 0){
-//			
-//			if (productOrderStr==''){
-//				productOrderStr=pid+'<fd>'+pqty
-//				productOrderShowStr=pname+'('+pqty+')'
-//			}else{
-//				productOrderStr+='<rd>'+pid+'<fd>'+pqty
-//				productOrderShowStr+=', '+pname+'('+pqty+')'
-//				}			
-//		}
-//		
-//	};
-//	localStorage.productOrderStr=productOrderStr
-	//alert (localStorage.productOrderStr);
-	//var url = "#page_cart";	
-//	$.mobile.navigate(url);	
+
 		
 	}
 function getOrderData(){	
@@ -1815,9 +1856,9 @@ function lscVisitSubmit(){
 		var imageName=localStorage.user_id+'_'+now.toString()+'.jpg';
 		
 		
-		//if (lat=='' || lat==0 || long=='' || long==0){
-//			$("#errorChkVSubmit").html('Location not Confirmed');		
-//		}else{
+		if (lat=='' || lat==0 || long=='' || long==0){
+			$("#errorChkVSubmit").html('Location not Confirmed');		
+		}else{
 			
 			if (visitClientId=='' || visitClientId==undefined){
 				$("#errorChkVSubmit").html('Invalid Client');		
@@ -1943,7 +1984,7 @@ function lscVisitSubmit(){
 					 });//end ajax	
 				}
 			}
-		//  }//locaction check
+		  }//locaction check
 	}
   }
 
@@ -4443,7 +4484,8 @@ function search_item() {
 //--------------------Item Search End----------------
 //--------------------cart Start----------------
 function cart_data() {	
-	//alert ('nadira');
+	
+	//alert (localStorage.productOrderStr.length);
 	if (localStorage.productOrderStr.length >0){
 		var orderProductList=localStorage.productOrderStr.split('<rd>');
 		var orderProductLength=orderProductList.length;
