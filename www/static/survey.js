@@ -113,6 +113,7 @@ function clear_autho(){
 		localStorage.marketInfoStr=''
 		localStorage.marketInfoSubmitStr=''
 		localStorage.productOrderStr=''
+		localStorage.product_tbl_cart=''
 		localStorage.marchandizingInfoStr=''
 		
 		localStorage.visit_plan_marketlist_combo=''
@@ -167,7 +168,7 @@ function check_user() {
 	
 	var cid=$("#cid").val().toUpperCase();
 	
-	//var apipath_base_photo_dm='http://127.0.0.1:8000/mrepbiopharma/syncmobile/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+	//var apipath_base_photo_dm='http://127.0.0.1:8000/mrepbiopharma_without_doctor/syncmobile/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	var apipath_base_photo_dm='http://e2.businesssolutionapps.com/welcome/dmpath/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	//var apipath_base_photo_dm='http://im-gp.com/dmpath/index.php?CID='+cid +'&HTTPPASS=e99business321cba'
 	
@@ -318,8 +319,8 @@ function check_user() {
 														planMarketName=planMarketValueArray[1];
 														marketID=planMarketID
 														marketName=planMarketName
-														var marketNameID=planMarketName+'-'+planMarketID;
-														
+														var marketNameID=planMarketName+'|'+planMarketID;
+														//alert (marketNameID);
 														if(planMarketID!=''){
 															unscheduleMarketComb+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><a onClick="marketNextLV(\''+marketNameID+'\')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+marketNameID+'</a></li>';
 															visitPlanMarketComb+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><a onClick="visitPlanMarketNextLV(\''+marketNameID+'\')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+marketNameID+'</a></li>';
@@ -360,7 +361,7 @@ function check_user() {
 														var regionID=regionListArray[0];
 														var regionName=regionListArray[1].replace('-',' ');
 														if (regionID!=''){
-															region_combo+='<option value="'+regionName+'-'+regionID+'" >'+regionName+'-'+regionID+'</option>';
+															region_combo+='<option value="'+regionName+'|'+regionID+'" >'+regionName+'|'+regionID+'</option>';
 														}
 													}
 													localStorage.region_string=region_combo
@@ -744,10 +745,10 @@ function marketNext() {
 			
 			
 			//visitMarketStr
-			var marketNameId=market_name.split('-');
+			var market_Id=market_name.split('|')[1];
 			//var market_Id=marketNameId[1];
-			var market_Id=market_name.replace(marketNameId[0]+"-","");
-			//http://127.0.0.1:8000/lscmreporting/syncmobile/getMarketClientList?cid=LSCRM&rep_id=1001&rep_pass=123&synccode=7048&market_id=M000003
+			//var market_Id=market_name.replace(marketNameId[0]+"-","");
+			//$("#err_market_next").text(localStorage.base_url+'getMarketClientList?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&market_id='+market_Id);
 			// ajax-------
 			$.ajax({
 				 type: 'POST',
@@ -1999,7 +2000,7 @@ function marketNextCProfile() {
 			
 			
 			//visitMarketStr
-			var marketNameId=market_name.split('-');
+			var marketNameId=market_name.split('|');
 			var market_Id=marketNameId[1];
 			
 			
@@ -2032,6 +2033,7 @@ function marketNextCProfile() {
 								var mClientListShowLength=mClientList.length	
 								
 								//var profile_m_client_combo='<option value="0" > Select Retailer</option>'
+								
 								var profile_m_client_combo=''
 								for (var i=0; i < mClientListShowLength; i++){
 									var mClientValueArray = mClientList[i].split('<fd>');
@@ -2113,7 +2115,7 @@ function marketRetailerNextCProfile() {
 			
 			profileClientId=localStorage.visit_client.split('-')[1]
 			
-			//alert(localStorage.base_url+'getClientProfile?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&client_id='+profileClientId);
+			//$("#err_m_retailer_next_cp").text(localStorage.base_url+'getClientProfile?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&client_id='+profileClientId);
    			
 			// ajax-------
 			$.ajax({
@@ -2135,7 +2137,7 @@ function marketRetailerNextCProfile() {
 								$("#btn_profile_market_ret").show();
 							
 							}else if (resultArray[0]=='SUCCESS'){
-														
+													
 								var visitMarketStr=resultArray[1];
 								var clientCatStr=resultArray[2];								
 								var clientProfileStr=resultArray[3];
@@ -2145,6 +2147,7 @@ function marketRetailerNextCProfile() {
 								var clientCatStrList=clientCatStr.split('<fd>')								
 								var clientCatStrListLength=clientCatStrList.length									
 								//var ob2 = $("#cp_Category");
+								
 								var cp_categoryOptions='';							
 								for (var k=0; k < clientCatStrListLength; k++){
 									var clientCatID = clientCatStrList[k]									
@@ -2156,8 +2159,9 @@ function marketRetailerNextCProfile() {
 								
 								//--------
 								$(".prof_market_class").html(visitMarketStr);
-								$(".prof_distributor_class").html(clientProfileDistributorStr);								
-								$(".prof_retailer_class").html(profileClientId);
+								$(".prof_distributor_class").html(clientProfileDistributorStr);		
+								$(".prof_retailer_class").html(profile_client);						
+								//$(".prof_retailer_class").html(profileClientId);
 												
 								//----------------						
 												
@@ -2621,7 +2625,7 @@ function lscProfileSubmit(){
 			$("#btn_profile_update").hide();
 			$("#wait_image_profile_update").show();		
 			
-			//$("#errorConfirmProfileUpdate").html(localStorage.base_url+'updateClientProfile?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&client_data='+encodeURI(clientUpdateStr)+'&lat='+lat+'&long='+long+'&profile_photo='+imageName+'&profile_photo_str=abc')
+			//$("#errorConfirmProfileUpdate").text(localStorage.base_url+'updateClientProfile?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&client_data='+encodeURI(clientUpdateStr)+'&lat='+lat+'&long='+long+'&profile_photo='+imageName+'&profile_photo_str=abc')
 			// ajax-------
 			$.ajax({
 				 type: 'POST',
@@ -2643,6 +2647,7 @@ function lscProfileSubmit(){
 								
 							}else if (resultArray[0]=='SUCCESS'){								
 								//-----------
+								
 								clientUpdateStr=''
 								$("#lat_p").val('');
 								$("#long_p").val('');								
@@ -2665,6 +2670,7 @@ function lscProfileSubmit(){
 								//uploadPhotoProfile(lscPhotoProfile, imageName);
 								
 								//----
+								
 								var url = "#page_profile_update_success";	
 								$.mobile.navigate(url);
 								

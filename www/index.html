@@ -871,7 +871,7 @@
   
   <div data-role="content"> 
   	
-    <div align="right"><img src="" width="100%" height="150px" alt="Shop Photo" id="clientProfileImage"></div>
+    <div align="right"><img src="" width="100%" height="150px" alt="Shop Photo" id="clientProfileImage"  style="display:none"></div>
     
   	<ul data-inset="true"  data-role="listview">
         <li>
@@ -998,12 +998,12 @@
 		<div data-role="content">
 			<div id="errorConfirmProfileUpdate" style="color:#C00"></div>
 			
-			<a data-role="button" onClick="getImageProfile();" >Take Picture</a>       
-			<img src="" width="128" height="128" alt="" id="myImageProfile">
+			<!--<a data-role="button" onClick="getImageProfile();" >Take Picture</a>-->       
+			<img src="" width="128" height="128" alt="" id="myImageProfile" style="display:none">
 			<input name="lscPhotoProfile" id="lscPhotoProfile" type="hidden">	
             
-			<input type="text" name="lat_p" id="lat_p" >
-			<input type="text" name="long_p" id="long_p" ><!--readonly-->
+			<input type="hidden" name="lat_p" id="lat_p" >
+			<input type="hidden" name="long_p" id="long_p" ><!--readonly-->
             
             <!--<input type="text" name="urlpath" id="urlpath">-->
             
