@@ -745,7 +745,7 @@
                 <table width="100%" style="background-color:#F2F2F2;">
                 	<tr>
                     <td style="text-align:left"><div align="left">Market :<span class="market"></span></div></td>
-                    <td style="text-align:right"><div ><a  href="#"   onClick="marketNextCProfile_map();"><img id="wait_image_profile_market"  src="map_button.png" alt=""></a></div></td>
+                    <td style="text-align:right"><!--<div ><a  href="#"   onClick="marketNextCProfile_map();"><img id="wait_image_profile_market"  src="map_button.png" alt=""></a></div>--></td>
                     </tr>
                 </table>
                 
@@ -845,7 +845,7 @@
 				<a data-role="button" href="#page_confirm" data-icon="arrow-r" data-iconpos="right" >Next</a>
                 
                 <br/><br/><br/><br/><br/><br/>
-                <button class="ui-btn ui-shadow ui-corner-all ui-btn-icon-right ui-icon-delete" onClick="cancelVisitPage();" >Cancel</button>
+                <button class="ui-btn ui-shadow ui-corner-all ui-btn-icon-right ui-icon-delete" onClick="cancelVisitPage();" >Cancel Voucher</button>
 				
                 <br/>
                 
@@ -886,9 +886,10 @@
         <input type="hidden" name="" id="cp_marketid"  value="">
         <input type="hidden" name="" id="cp_id"  value="" style="background-color:#EAEAEA" readonly>
         
-    	<tr style="border-color: #F33"><td width="30%" class="prof_label" style="border-color: #F33">Name*</td><td><input type="text" name="" id="cp_name"  value=""></td></tr>
-        <tr><td width="30%" class="prof_label">Address</td><td><input type="text" name="" id="cp_address"  value=""></td></tr>        
-        <tr><td width="30%" class="prof_label">Contact 1*</td><td><input type="text" name="" id="cp_contact1"  value=""></td></tr>
+    	<tr style="border-color: #F33"><td width="30%" class="prof_label" style="border-color: #F33">Name*</td><td>
+        <input type="text" name="" id="cp_name"  value="" style="background-color:#EAEAEA" readonly></td></tr>
+        <tr><td width="30%" class="prof_label">Address</td><td><input type="text" name="" id="cp_address"  value="" ></td></tr>        
+        <tr><td width="30%" class="prof_label" style="color:#C00">Contact 1*</td><td><input type="text" name="" id="cp_contact1"  value=""></td></tr>
         <tr><td width="30%" class="prof_label">Contact 2</td><td><input type="text" name="" id="cp_contact2"  value=""></td></tr>        
         <td width="30%" class="prof_label"></tbody>
         
@@ -897,10 +898,11 @@
         <tr><td width="30%" class="prof_label">Manager Name</td><td><input type="text" name="" id="cp_manager_name"  value=""></td></tr>
         <tr><td width="30%" class="prof_label">Manager Cont.No</td><td><input type="number" name="" id="cp_manager_cont_no"  value=""></td></tr>
         <tr><td width="30%" class="prof_label">Starting Year</td><td><input type="number" name="" id="cp_starting_year"  value=""></td></tr>
-        <tr><td width="30%" class="prof_label">Category*</td><td>
-        <select name="cp_Category" id="cp_Category" data-native-menu="false">
+        <tr><td width="30%" class="prof_label"><!--Category*--></td><td>
+        <input type="hidden" name="" id="cp_Category"  value="GENERAL">
+        <!--<select name="cp_Category" id="cp_Category" data-native-menu="false">
             <option value="" >Select</option>            
-        </select>
+        </select>-->
         <input type="hidden" name="" id="cp_lsc_covered"  value="NO">
         </td></tr>
        <!-- <tr><td width="30%" class="prof_label">LSC Covered ?*</td><td>
@@ -912,7 +914,7 @@
         </td></tr>-->
         <!--<tr><td width="30%" class="prof_label">Monthly Sales Capacity</td><td><input type="number" name="" id="cp_monthly_sales_capacity"  value=""></td></tr>
         <tr><td width="30%" class="prof_label">Monthly Sales</td><td><input type="number" name="" id="cp_monthly_sales"  value=""></td></tr>-->
-        <tr><td width="30%" class="prof_label">Shop (Rented/Own)*</td><td>
+        <tr><td width="30%" class="prof_label" style="color:#C00">Shop (Rented/Own)*</td><td>
         <select name="cp_shop_rent_own" id="cp_shop_rent_own" data-native-menu="false">
             <option value="" >Select</option>
             <option value="Rented" >Rented</option>
@@ -924,51 +926,70 @@
         <tr><td width="30%" class="prof_label">Shop Front Size (ft)</td><td><input type="number" name="" id="cp_shop_front_size"  value=""></td></tr>
         <tr><td width="30%" class="prof_label">Truck (Number)</td><td><input type="number" name="" id="cp_truck_number"  value=""></td></tr>
         <tr><td width="30%" class="prof_label">Barge (Number)</td><td><input type="number" name="" id="cp_barge_number"  value=""></td></tr>-->
-        <tr><td width="30%" class="prof_label">Status*</td><td>
-        <select name="cp_status" id="cp_status" data-native-menu="false">
+        <tr><td width="30%" class="prof_label"><!--Status*--></td><td>
+        <input type="hidden" name="cp_status" id="cp_status"  value="ACTIVE">
+        <!--<select name="cp_status" id="cp_status" data-native-menu="false">
             <option value="" >Select</option>
             <option value="ACTIVE" >ACTIVE</option>
             <option value="INACTIVE" >INACTIVE</option>
-        </select>
+        </select>-->
         </td></tr>               
     	</tbody>
         
         <tbody bgcolor="#EAEBCF">        
         <tr style="background-color:#CCC"><td colspan="2"><strong>Personal Info:</strong></td></tr>
-        <tr><td width="30%" class="prof_label">Owner Name*</td><td><input type="text" name="" id="cp_owner_name"  value=""></td></tr>
-        <tr><td width="30%" class="prof_label">NID</td><td><input type="number" name="" id="cp_nid"  value=""></td></tr>
-        <tr><td width="30%" class="prof_label">Passport</td><td><input type="text" name="" id="cp_Passport"  value=""></td></tr>
+        <tr><td width="30%" class="prof_label" style="color:#C00">Owner Name*</td><td><input type="text" name="" id="cp_owner_name"  value=""></td></tr>
+        <tr><td width="30%" class="prof_label">DOB</td><td>
+        <input type="date" name="" id="cp_dob"  value="" placeholder="YYYY-MM-DD">
+        
+        <input type="hidden" name="" id="cp_nid"  value="">
+        <input type="hidden" name="" id="cp_Passport"  value="">
+        
+        <input type="hidden" name="" id="cp_dom"  value="" placeholder="YYYY-MM-DD">
+        <input type="hidden" name="" id="cp_kidsinfo"  value="">
+        <input type="hidden" name="" id="cp_hobby"  value="">
+        <input type="hidden" name="cp_trade_license" id="cp_trade_license"  value="YES">
+        <input type="hidden" name="" id="cp_trade_licence_no"  value="">
+        <input type="hidden" name="cp_vat_registration" id="cp_vat_registration"  value="YES">
+        <input type="hidden" id="cp_vat_reg_no"  value="">
+        </td></tr>
+        
+        
+       <!-- <tr><td width="30%" class="prof_label">NID</td><td><input type="hidden" name="" id="cp_nid"  value=""></td></tr>
+        <tr><td width="30%" class="prof_label">Passport</td><td><input type="hidden" name="" id="cp_Passport"  value=""></td></tr>
         <tr><td width="30%" class="prof_label">DOB</td><td><input type="date" name="" id="cp_dob"  value="" placeholder="YYYY-MM-DD"></td></tr>
-        <tr><td width="30%" class="prof_label">DOM</td><td><input type="date" name="" id="cp_dom"  value="" placeholder="YYYY-MM-DD"></td></tr>
-        <tr><td width="30%" class="prof_label">KIDs Info</td><td><input type="text" name="" id="cp_kidsinfo"  value=""></td></tr>
-        <tr><td width="30%" class="prof_label">Hobby</td><td><input type="text" name="" id="cp_hobby"  value=""></td></tr>
+        <tr><td width="30%" class="prof_label">DOM</td><td><input type="hidden" name="" id="cp_dom"  value="" placeholder="YYYY-MM-DD"></td></tr>
+        <tr><td width="30%" class="prof_label">KIDs Info</td><td><input type="hidden" name="" id="cp_kidsinfo"  value=""></td></tr>
+        <tr><td width="30%" class="prof_label">Hobby</td><td><input type="hidden" name="" id="cp_hobby"  value=""></td></tr>
         <tr><td width="30%" class="prof_label">Trade License*</td><td>
+        <input type="hidden" name="cp_trade_license" id="cp_trade_license"  value="YES">
         <select name="cp_trade_license" id="cp_trade_license" data-native-menu="false">
             <option value="" >Select</option>
             <option value="YES" >YES</option>
             <option value="NO" >NO</option>
         </select>
-        </td></tr>
-        <tr><td width="30%" class="prof_label">Trade Licence No</td><td><input type="text" name="" id="cp_trade_licence_no"  value=""></td></tr>
+        </td></tr>-->
+       <!-- <tr><td width="30%" class="prof_label">Trade Licence No</td><td><input type="hidden" name="" id="cp_trade_licence_no"  value=""></td></tr>
         <tr><td width="30%" class="prof_label">VAT Registration*</td><td>
+        <input type="hidden" name="cp_vat_registration" id="cp_vat_registration"  value="YES">
         <select name="cp_vat_registration" id="cp_vat_registration" data-native-menu="false">
             <option value="" >Select</option>
             <option value="YES" >YES</option>
             <option value="NO" >NO</option>
         </select>
-        </td></tr>
-        <tr><td width="30%" class="prof_label">VAT Reg.No</td><td><input type="text" name="" id="cp_vat_reg_no"  value=""></td></tr>
+        </td></tr>-->
+        <!--<tr><td width="30%" class="prof_label">VAT Reg.No</td><td><input type="hidden" name="" id="cp_vat_reg_no"  value=""></td></tr>-->
    		</tbody>
         
   	</table>
   	<br>
 	<br>
-
+	<div id="err_profile_next_cp" style="color:#C00"></div><br>
+    <br>
 	<a  data-role="button" onClick="prifileInfoNext();" >Next</a>	
     
     <br>
-	<div id="err_profile_next_cp" style="color:#C00"></div><br>
-    <br>
+	
     <br>
 	<br>
     <br>
@@ -1182,7 +1203,7 @@
                     <td style=" color:#009191"> 
                     <div>Market :<span class="market"></span></div>
                     <div>Distributor :<span class="visit_distributor"></span></div>
-                    <div>Retailer :<span class="visit_client" style="font-weight:bold"></span></div> 
+                    <div>Chemist :<span class="visit_client" style="font-weight:bold"></span></div> 
                     </td>
                     <td width="30px"><a  onClick="OrderData();"  href="#page_order" ><img src="edit.png"></a></td>
                     <td>&nbsp;</td>
@@ -1444,8 +1465,8 @@
 		<a data-role="button" href="#pageHome"  class="ui-btn ui-shadow ui-corner-all ui-icon-bullets " ><img src="menu.png"></a>
 			<h3>Success</h3>
 	  </div>
-		<div data-role="content">
-        	<div style="background-image:url(result_back.png); background-repeat:no-repea; width:300px; height:200px; color:#FFF; font-size:16px; font-weight:bold"  id="visit_result" align="center"></br></br></br>Submitted Successfully</div>
+		<div data-role="content" align="center">
+        	<div id="visit_success" style="background-image:url(result_back.png); background-repeat:no-repea; width:300px; height:200px; color:#FFF; font-size:20px;"  id="visit_result" align="center"></br></br></br>Submitted Successfully</div>
         	<!--<div>Submitted Successfully</div>	-->	
             
            <!-- <a data-role="button" onClick="getOtherOutlet();" >Other Outlet</a>-->
@@ -1458,7 +1479,7 @@
             
 			<br/>
 			<!--<a data-role="button" href="#pageHome" >Home</a>-->
-			
+			<a data-role="button" href="#page_market_ret" >Another Chemist</a>
 		</div>
 		
 		<div data-theme="c" data-role="footer" data-position="fixed" style="font-size:12px;background-color:#CCC;" align="center" ></div>
@@ -1783,7 +1804,10 @@
                     </select>
                     </td></tr>-->
                     
-                    <tr><td>Feedback</td><td><input type="text" name="complain_ref" id="complain_ref"  value=""></td></tr>
+                    <tr><td>Feedback</td><td>
+                    <textarea name="complain_ref" id="complain_ref" value=""></textarea>
+                   <!-- <input type="text" name="complain_ref" id="complain_ref"  value="">-->
+                   </td></tr>
                     
                     <tr><td></td><td><input type="hidden" name="complain_details" id="complain_details"  value="">
                     <!--<textarea name="complain_details" id="complain_details" value=""></textarea>--></td></tr>

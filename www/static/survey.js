@@ -27,6 +27,8 @@ function onSuccess(position) {
 	$("#long_p").val(position.coords.longitude);
 	
 	$("#errorChkVSubmit").html('');
+	$("#errorConfirmProfileUpdate").html('');
+	
 	$("#checkLocation").html('Location Confirmed');
 	$("#checkLocationProfileUpdate").html('Location Confirmed');	
 }
@@ -1966,6 +1968,8 @@ function lscVisitSubmit(){
 										//uploadPhotoV(lscPhoto, imageName);
 										
 										//--
+										$("#visit_success").html('</br></br>Visit SL: '+resultArray[1]+'</br>Submitted Successfully');
+										
 										var url = "#page_confirm_visit_success";	
 										$.mobile.navigate(url);
 																				
@@ -2396,9 +2400,9 @@ function prifileInfoNext(){
 	var cp_barge_number=$("#cp_barge_number").val();
 	var cp_status=$("#cp_status").val();
 	
-//	if(cp_id=='' || cp_name=='' || cp_marketid==''|| cp_contact1=='' || cp_owner_name=='' || cp_trade_license=='' || cp_vat_registration=='' || cp_Category=='' || cp_lsc_covered=='' || cp_shop_rent_own=='' || cp_status==''){
-//		$("#err_profile_next_cp").html('Important Value Required');
-//	}else{
+	if(cp_id=='' || cp_name=='' || cp_marketid==''|| cp_contact1=='' || cp_owner_name=='' || cp_trade_license=='' || cp_vat_registration=='' || cp_Category=='' || cp_lsc_covered=='' || cp_shop_rent_own=='' || cp_status==''){
+		$("#err_profile_next_cp").html('Important Value Required');
+	}else{
 //		
 //		//------------------------ Contact 1 check
 //		var contact1Flag=true;
@@ -2639,7 +2643,7 @@ function prifileInfoNext(){
 //				}	//		NID		
 //			  }	//contact 2		
 //			}	//contact 1
-//		}//must value
+		}//must value
 		
 	}//function
 	
