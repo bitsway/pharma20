@@ -435,7 +435,7 @@
 			</div><!-- /panel -->
 			
             <div data-theme="c" data-role="header" data-position="fixed" >			
-				<a  data-role="button" href="#routePanel" class="ui-btn-left ui-btn-icon-notext"><img src="menu.png"></a>
+				<a  data-role="button" href="#routePanel" class="ui-btn-left ui-btn-icon-notext" onClick="clear_mgs()"><img src="menu.png"></a>
                 <a  data-role="button" onClick="exit();" class="ui-btn-right" style="padding:4px;"><img src="exit.png" style="height:25px; width:25px;"></a>
                 
                 <!--<a data-role="button" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-right ui-icon-power ui-btn-icon-notext " onClick="exit();"><img src="exit.png"></a>-->
@@ -447,11 +447,13 @@
 				
 				<div id="myerror" style="color:#C00;">				
 				</div>
+                 <a id="sub_button" data-role="button" style="height:100px;" onClick="addMarketList();reset_doc()" ><img style="padding-top:0px; padding-bottom:0px;" src="chemist_visit.png"></a>
+                <a id="sub_button" data-role="button" style="height:100px;" onClick="addMarketListCp()" ><img style="padding-top:0px; padding-bottom:0px;" src="chemist_profile.png"></a>
+                <a id="sub_button" data-role="button" style="height:100px;" onClick="addMarketList();set_doc()" ><img style="padding-top:0px; padding-bottom:0px;" src="doctor_visit.png"></a>
+                <a id="sub_button" data-role="button" style="height:100px;" onClick="addMarketListCp()" ><img style="padding-top:0px; padding-bottom:0px;" src="doctor_profile.png"></a>
                 
-                <a id="sub_button" data-role="button" style="height:100px;" onClick="addMarketList()" ><img style="padding-top:0px; padding-bottom:0px;" src="chemist_visit.png"></a>
-                <a id="sub_button" data-role="button" style="height:100px;" onClick="addMarketListCp()" ><img style="padding-top:0px; padding-bottom:0px;" src="profile.png"></a>
-                <a id="sub_button" data-role="button" style="height:100px;" href="#page_complain" ><img style="padding-top:0px; padding-bottom:0px;" src="complain.png"></a>
-				
+                </br>
+                <a id="sub_button" data-role="button" style="height:100px;" href="#page_complain" ><img style="padding-top:0px; padding-bottom:0px;" src="feedback.png"></a>
                 
                 
                 
@@ -505,7 +507,7 @@
 	        <!--===================== pageSync ==================-->
 		<div data-theme="c" data-role="page" id="login">
             <div data-theme="c" data-role="header" data-position="fixed">				
-				<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext"><img src="menu.png"> </a>
+				<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext" onClick="clear_mgs()"><img src="menu.png"> </a>
                 <h3>Authorization</h3>
             </div>
 			
@@ -539,7 +541,7 @@
 <!--=====================scheduled Page==================-->
 		<div data-theme="c" data-role="page" id="page_scheduled">
             <div data-theme="c" data-role="header" data-position="fixed">
-			<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext"><img src="menu.png"></a>
+			<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext" onClick="clear_mgs()"><img src="menu.png"></a>
             <a data-role="button" data-rel="back"  data-iconpos="left" class="ui-btn-right"><img src="back.png"></a>
                 <h3>Scheduled Date</h3>
             </div>
@@ -609,7 +611,7 @@
 <!--=====================Unschedule Market==================-->
 		<div data-theme="c" data-role="page" id="page_market">
             <div data-theme="c" data-role="header" data-position="fixed">
-			<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext"><img src="menu.png"></a>
+			<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext" onClick="clear_mgs()"><img src="menu.png"></a>
             <a data-role="button" data-rel="back"  data-iconpos="left" class="ui-btn-right"><img src="back.png"></a>
                 <h3>Market</h3>
             </div>
@@ -648,9 +650,9 @@
 <!--=====================Unschedule: market retailer Page==================-->
 		<div data-theme="c" data-role="page" id="page_market_ret">
             <div data-theme="c" data-role="header" data-position="fixed">
-			<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext"><img src="menu.png"></a>
+			<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext" onClick="clear_mgs()"><img src="menu.png"></a>
             <a data-role="button" data-rel="back"  data-iconpos="left" class="ui-btn-right"><img src="back.png"></a>
-                <h3>Chemist</h3>
+                <h3><div id="d_visit"> Chemist</div></h3>
             </div>
 			
             <div data-role="content" style="margin-top:0px; padding-top:0px;">            	
@@ -694,7 +696,7 @@
 <!--=====================client profile: Market Page==================-->
 		<div data-theme="c" data-role="page" id="page_market_clprofile">
             <div data-theme="c" data-role="header" data-position="fixed">
-			<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext"><img src="menu.png"></a>
+			<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext" onClick="clear_mgs()"><img src="menu.png"></a>
             <a data-role="button" data-rel="back"  data-iconpos="left" class="ui-btn-right"><img src="back.png"></a>
                 <h3>Market</h3>
             </div>
@@ -731,7 +733,7 @@
 <!--=====================client profile: retailer Page==================-->
 		<div data-theme="c" data-role="page" id="page_market_ret_cprofile">
             <div data-theme="c" data-role="header" data-position="fixed">
-			<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext"><img src="menu.png"></a>
+			<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext" onClick="clear_mgs()"><img src="menu.png"></a>
             <a data-role="button" data-rel="back" data-iconpos="left" class="ui-btn-right"><img src="back.png"></a>
                 <h3>Chemist</h3>
             </div>
@@ -792,7 +794,7 @@
         
         <div data-theme="c" data-role="page" id="page_market_ret_cprofile_map">
             <div data-theme="c" data-role="header" data-position="fixed">
-			<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext"><img src="menu.png"></a>
+			<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext" onClick="clear_mgs()"><img src="menu.png"></a>
             <a data-role="button" data-rel="back"  data-iconpos="left" class="ui-btn-right"><img src="back.png"></a>
                 <h3>Market Chemist Map</h3>
             </div>
@@ -818,7 +820,7 @@
 <!--=====================market visit Page==================-->
 		<div data-theme="c" data-role="page" id="page_visit">
             <div data-theme="c" data-role="header" data-position="fixed">
-			<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext"><img src="menu.png"></a>
+			<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext" onClick="clear_mgs()"><img src="menu.png"></a>
             <a data-role="button" data-rel="back"  data-iconpos="left" class="ui-btn-right"><img src="back.png"></a>
                 <h3>Chemist visit</h3>
             </div>
@@ -829,13 +831,13 @@
 					<li >
 						<div><b>Visit Type & Date:</b><span class="visit_type"></span>&nbsp;,&nbsp;<span class="s_date"></span></div>						
 						<div><b>Market :</b><span class="market"></span></div>
-                        <div><b>Distributor :</b><span class="visit_distributor"></span></div>
+                        <!--<div><b>Distributor :</b><span class="visit_distributor"></span></div>-->
                         <div><b>Chemist :</b><span class="visit_client" style="font-weight:bold"></span></div>
 					</li>
 				</ul>
                 <ul data-inset="true"  data-role="listview" class="ui-nodisc-icon ui-alt-icon">
 					<!--<li style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:medium"><a data-role="button" class="ui-btn" style="text-align:center" onClick="getMarketInfo();" >Market Info</a></li>-->
-                    <li style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:medium"><a data-role="button" class="ui-btn" style="text-align:center" onClick="getOrder();" >Order</a></li>
+                    <li style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:medium;" ><a data-role="button"  class="ui-btn" style="text-align:center; " onClick="getOrder();" >Order</a></li>
                     <!--<li style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:medium"><a data-role="button" class="ui-btn" style="text-align:center" onClick="getMarchandizing();" >Marchandizing</a></li>-->
                     <!--<li style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:medium" ><a data-role="button" class="ui-btn" style="text-align:center" onClick="getVisitCampaign();" >Market Feedback</a></li>-->
                     <!--<li style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:medium" ><a data-role="button" class="ui-btn" style="text-align:center" onClick="getVisitReportPage();">Reports</a></li>-->
@@ -856,7 +858,230 @@
 			<!--panel-->	
 			
 		 </div><!--/page-->
-
+<!--=================Doctor===========================-->
+<!--=====================market visit Page Doctor==================-->
+		<div data-theme="c" data-role="page" id="page_visit_doc">
+            <div data-theme="c" data-role="header" data-position="fixed">
+			<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext" onClick="clear_mgs()"><img src="menu.png"></a>
+            <a data-role="button" data-rel="back"  data-iconpos="left" class="ui-btn-right"><img src="back.png"></a>
+                <h3>Doctor visit</h3>
+            </div>
+			
+            <div data-role="content">
+				<div id="myerror" style="color:#C00"></div>
+				<ul data-inset="true"  data-role="listview">
+					<li >
+						<div><b>Visit Type & Date:</b><span class="visit_type"></span>&nbsp;,&nbsp;<span class="s_date"></span></div>						
+						<div><b>Market :</b><span class="market"></span></div>
+                        <div><b>Distributor :</b><span class="visit_distributor"></span></div>
+                        <div><b>Doctor :</b><span class="visit_client" style="font-weight:bold"></span></div>
+					</li>
+				</ul>
+                <ul data-inset="true"  data-role="listview" class="ui-nodisc-icon ui-alt-icon">
+					<!--<li style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:medium"><a data-role="button" class="ui-btn" style="text-align:center" onClick="getMarketInfo();" >Market Info</a></li>-->
+                    <li style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:medium"><a data-role="button" class="ui-btn" style="text-align:center" onClick="getCampaign();" >Campaign</a></li>
+                    
+                    <div id="doc_campaign"></div>
+                    <li style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:medium"><a data-role="button" class="ui-btn" style="text-align:center" onClick="getDoctorGift();" >Gift</a></li>
+                    <div id="doc_gift"></div>
+                    
+                    <li style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:medium" ><a data-role="button" class="ui-btn" style="text-align:center" onClick="getDoctorSample();" >Sample</a></li>
+                    <!--<li style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:medium" ><a data-role="button" class="ui-btn" style="text-align:center" onClick="getVisitReportPage();">Reports</a></li>-->
+                    <div id="doc_sample"></div>
+                </ul>
+                <textarea name="doc_feedback"  id="doc_feedback" rows="5" placeholder="Feedback/Note"></textarea>
+                
+                
+				<br/>
+				<a data-role="button" href="#page_confirm" data-icon="arrow-r" data-iconpos="right" >Next</a>
+                
+                <br/><br/><br/><br/><br/><br/>
+                <button class="ui-btn ui-shadow ui-corner-all ui-btn-icon-right ui-icon-delete" onClick="cancelVisitPage();" >Cancel</button>
+				
+                <br/>
+                
+            </div><!--/cont-->
+			
+			<!--<div data-theme="c" data-role="footer" data-position="fixed"></div>-->
+			
+			<!--panel-->	
+			
+		 </div><!--/page-->
+         <!--=====================Doctor Campaign Page==================-->
+		<div data-theme="c" data-role="page" id="page_doctor_campaign">
+            <div data-theme="c" data-role="header" data-position="fixed">
+			<!--<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext"><img src="menu.png"></a>-->
+            <!--<a data-role="button" data-rel="back"  data-icon="arrow-l" data-iconpos="left" class="ui-btn-right">Back</a>-->
+               <!-- <h3>Order</h3>-->
+                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <!--<td align="left"><a data-role="button" href="#page_visit"  ><img src="back.png"></a></td>-->
+                    <td width="50%"><input type="text" data-iconpos="right" name="item_search_doctor_campaign" id="item_search_doctor_campaign"  ></td>
+                    <td width="10%px"><a data-role="button" onClick="search_item_doctor_campaign();" style="height:15px" ><img src="search.png"></a></td>
+                    <td align="right"><a style="height:20px; width:27px" data-role="button" onClick="getDocCampaignData();" ><img src="done.png"></a>&nbsp;&nbsp;</td>
+                  </tr>
+                </table>
+            </div>
+			
+            <div data-role="content" style="overflow:scroll">
+				<div id="myerror_doctor_campaign" style="color:#C00"></div>
+				<ul data-inset="true"  data-role="listview">
+					<li>
+						<div><b>Visit Type & Date:</b><span class="visit_type"></span>&nbsp;&nbsp;<span class="s_date"></span></div>						
+						<div><b>Market :</b><span class="market"></span></div>
+                        <div><b>Distributor :</b><span class="visit_distributor"></span></div>
+                        <div><b>Chemist :</b><span class="visit_client" style="font-weight:bold"></span></div>                        
+					</li>					
+				</ul>
+				<div id="doctor_campaign_list_tbl"></div>
+				
+                <br>
+			  
+			
+            <br>                        
+            <br>
+            <br>            
+			<br>
+            <br>                        
+            <br>
+            <br>            
+			<br>
+            <br>                        
+            <br>
+            <br>            
+			<br>
+            <br>                        
+            <br>
+            <br>            
+			<br>
+			
+            </div><!--/cont-->
+			
+			
+			<div data-theme="c" data-role="footer" data-position="fixed" align="center">
+            
+           &nbsp; <a data-role="button" href="#page_visit"  ><img src="back.png"></a>
+            </div>
+			
+		 </div><!--/page-->
+         
+    <!--=====================Doctor Gift Page==================-->
+		<div data-theme="c" data-role="page" id="page_doctor_gift">
+            <div data-theme="c" data-role="header" data-position="fixed">
+			<!--<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext"><img src="menu.png"></a>-->
+            <!--<a data-role="button" data-rel="back"  data-icon="arrow-l" data-iconpos="left" class="ui-btn-right">Back</a>-->
+               <!-- <h3>Order</h3>-->
+                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <!--<td align="left"><a data-role="button" href="#page_visit"  ><img src="back.png"></a></td>-->
+                    <td width="50%"><input type="text" data-iconpos="right" name="item_search_doctor_campaign" id="item_search_doctor_campaign"  ></td>
+                    <td width="10%px"><a data-role="button" onClick="search_item_doctor_campaign();" style="height:15px" ><img src="search.png"></a></td>
+                    <td align="right"><a style="height:20px; width:27px" data-role="button" onClick="getDocGiftData();" ><img src="done.png"></a>&nbsp;&nbsp;</td>
+                  </tr>
+                </table>
+            </div>
+			
+            <div data-role="content" style="overflow:scroll">
+				<div id="myerror_doctor_gift" style="color:#C00"></div>
+				<ul data-inset="true"  data-role="listview">
+					<li>
+						<div><b>Visit Type & Date:</b><span class="visit_type"></span>&nbsp;&nbsp;<span class="s_date"></span></div>						
+						<div><b>Market :</b><span class="market"></span></div>
+                        <div><b>Distributor :</b><span class="visit_distributor"></span></div>
+                        <div><b>Doctor :</b><span class="visit_client" style="font-weight:bold"></span></div>                        
+					</li>					
+				</ul>
+				<div id="doctor_gift_list_tbl">abc</div>
+				
+                <br>
+                <br>
+			  
+			
+            <br>                        
+            <br>
+            <br>            
+			<br>
+            <br>                        
+            <br>
+            <br>            
+			<br>
+            <br>                        
+            <br>
+            <br>            
+			<br>
+            <br>                        
+            <br>
+            <br>            
+			<br>
+			
+            </div><!--/cont-->
+			
+			
+			<div data-theme="c" data-role="footer" data-position="fixed" align="center">
+            
+           &nbsp; <a data-role="button" href="#page_visit"  ><img src="back.png"></a>
+            </div>
+			
+		 </div><!--/page-->
+         
+         <!--=====================Doctor Gift Page==================-->
+		<div data-theme="c" data-role="page" id="page_doctor_sample">
+            <div data-theme="c" data-role="header" data-position="fixed">
+			<!--<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext"><img src="menu.png"></a>-->
+            <!--<a data-role="button" data-rel="back"  data-icon="arrow-l" data-iconpos="left" class="ui-btn-right">Back</a>-->
+               <!-- <h3>Order</h3>-->
+                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <!--<td align="left"><a data-role="button" href="#page_visit"  ><img src="back.png"></a></td>-->
+                    <td width="50%"><input type="text" data-iconpos="right" name="item_search_doctor_campaign" id="item_search_doctor_campaign"  ></td>
+                    <td width="10%px"><a data-role="button" onClick="search_item_doctor_campaign();" style="height:15px" ><img src="search.png"></a></td>
+                    <td align="right"><a style="height:20px; width:27px" data-role="button" onClick="getDocSampleData();" ><img src="done.png"></a>&nbsp;&nbsp;</td>
+                  </tr>
+                </table>
+            </div>
+			
+            <div data-role="content" style="overflow:scroll">
+				<div id="myerror_doctor_sample" style="color:#C00"></div>
+				<ul data-inset="true"  data-role="listview">
+					<li>
+						<div><b>Visit Type & Date:</b><span class="visit_type"></span>&nbsp;&nbsp;<span class="s_date"></span></div>						
+						<div><b>Market :</b><span class="market"></span></div>
+                        <div><b>Distributor :</b><span class="visit_distributor"></span></div>
+                        <div><b>Doctor :</b><span class="visit_client" style="font-weight:bold"></span></div>                        
+					</li>					
+				</ul>
+				<div id="doctor_sample_list_tbl">abc</div>
+				
+                <br>
+                <br>
+			  
+			
+            <br>                        
+            <br>
+            <br>            
+			<br>
+            <br>                        
+            <br>
+            <br>            
+			<br>
+            <br>                        
+            <br>
+            <br>            
+			<br>
+            <br>                        
+            <br>
+            <br>            
+			<br>
+			
+            </div><!--/cont-->
+			
+			
+			<div data-theme="c" data-role="footer" data-position="fixed" align="center">
+            
+           &nbsp; <a data-role="button" href="#page_visit"  ><img src="back.png"></a>
+            </div>
+			
+		 </div><!--/page-->
 <!--=========================== Profile =============-->
 <style>
 .prof_label{	
@@ -1012,7 +1237,7 @@
     <!-- -------------Confirm  Profile Update -------------------- -->
 	<div data-theme="c" data-role="page" id="page_confirm_profile_update" >
 		<div data-theme="c" data-role="header" data-position="fixed" >
-		<a data-role="button" href="#pageHome"  class="ui-btn ui-shadow ui-corner-all ui-icon-bullets " ><img src="menu.png"></a>
+		<a data-role="button" href="#pageHome"  class="ui-btn ui-shadow ui-corner-all ui-icon-bullets " onClick="clear_mgs()"><img src="menu.png"></a>
 			<a data-role="button" data-rel="back" data-iconpos="left" class="ui-btn-right" data-transition="slide"><img src="back.png"></a>
 			<h3>Confirm Update</h3>
 	  </div>
@@ -1044,7 +1269,7 @@
 <!-- ------------- Profile Update Success -------------------- -->
 	<div data-theme="c" data-role="page" id="page_profile_update_success" >
 		<div data-theme="c" data-role="header" data-position="fixed" >
-		<a data-role="button" href="#pageHome"  class="ui-btn ui-shadow ui-corner-all ui-icon-bullets " ><img src="menu.png"></a>
+		<a data-role="button" href="#pageHome"  class="ui-btn ui-shadow ui-corner-all ui-icon-bullets " onClick="clear_mgs()"><img src="menu.png"></a>
 			<h3>Success</h3>
 	  </div>
 		<div data-role="content">
@@ -1151,7 +1376,7 @@
 					<li>
 						<div><b>Visit Type & Date:</b><span class="visit_type"></span>&nbsp;&nbsp;<span class="s_date"></span></div>						
 						<div><b>Market :</b><span class="market"></span></div>
-                        <div><b>Distributor :</b><span class="visit_distributor"></span></div>
+                      <!--  <div><b>Distributor :</b><span class="visit_distributor"></span></div>-->
                         <div><b>Chemist :</b><span class="visit_client" style="font-weight:bold"></span></div>                        
 					</li>					
 				</ul>
@@ -1202,7 +1427,7 @@
                   <tr>
                     <td style=" color:#009191"> 
                     <div>Market :<span class="market"></span></div>
-                    <div>Distributor :<span class="visit_distributor"></span></div>
+                    <!--<div>Distributor :<span class="visit_distributor"></span></div>-->
                     <div>Chemist :<span class="visit_client" style="font-weight:bold"></span></div> 
                     </td>
                     <td width="30px"><a  onClick="OrderData();"  href="#page_order" ><img src="edit.png"></a></td>
@@ -1449,7 +1674,7 @@
 			<br/>
             <br/>
             
-			<a data-role="button" id="btn_visit_submit" onClick="lscVisitSubmit();" >Submit</a>
+			<a data-role="button" id="btn_visit_submit" onClick="visitSubmit();" >Submit</a>
 			<div align="center"><img id="wait_image_visit_submit" style="" width="50px;" src="loading.gif" alt=""></div>
             
             
@@ -1462,7 +1687,7 @@
     <!-- ------------- Visit Success -------------------- -->
 	<div data-theme="c" data-role="page" id="page_confirm_visit_success" >
 		<div data-theme="c" data-role="header" data-position="fixed" >
-		<a data-role="button" href="#pageHome"  class="ui-btn ui-shadow ui-corner-all ui-icon-bullets " ><img src="menu.png"></a>
+		<a data-role="button" href="#pageHome"  class="ui-btn ui-shadow ui-corner-all ui-icon-bullets " onClick="clear_mgs()"><img src="menu.png"></a>
 			<h3>Success</h3>
 	  </div>
 		<div data-role="content" align="center">
@@ -1479,7 +1704,7 @@
             
 			<br/>
 			<!--<a data-role="button" href="#pageHome" >Home</a>-->
-			<a data-role="button" href="#page_market_ret" >Another Chemist</a>
+			<a data-role="button" href="#page_market_ret" >Another</a>
 		</div>
 		
 		<div data-theme="c" data-role="footer" data-position="fixed" style="font-size:12px;background-color:#CCC;" align="center" ></div>
@@ -1488,7 +1713,7 @@
 <!--===================== visit plan market Page==================-->
 		<div data-theme="c" data-role="page" id="page_market_visit_plan">
             <div data-theme="c" data-role="header" data-position="fixed">
-			<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext"><img src="menu.png"></a>
+			<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext" onClick="clear_mgs()"><img src="menu.png"></a>
             <a data-role="button" data-rel="back"  data-iconpos="left" class="ui-btn-right"><img src="back.png"></a>
                 <h3>Market</h3>
             </div>
@@ -1526,7 +1751,7 @@
 <!-- ===================== visit plan Page================== -->
 		<div data-theme="c" data-role="page" id="page_plan">
             <div data-theme="c" data-role="header" data-position="fixed">
-			<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext"><img src="menu.png"></a>
+			<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext" onClick="clear_mgs()"><img src="menu.png"></a>
             <a data-role="button" data-rel="back"  data-iconpos="left" class="ui-btn-right"><img src="back.png"></a>
                 <h3>Visit Plan</h3>
             </div>
@@ -1573,7 +1798,7 @@
 <!-- ===================== visit Plan preview Page================== not use --> 
 		<div data-theme="c" data-role="page" id="page_visit_plan_preview">
             <div data-theme="c" data-role="header" data-position="fixed">
-			<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext"><img src="menu.png"></a>
+			<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext" onClick="clear_mgs()"><img src="menu.png"></a>
             <a data-role="button" data-rel="back"  data-iconpos="left" class="ui-btn-right"><img src="back.png"></a>
                 <h3>Visit Plan Preview</h3>
             </div>
@@ -1596,7 +1821,7 @@
         <!-- ------------- Visit Plan Success -------------------- -->
 	<div data-theme="c" data-role="page" id="page_visit_plan_success" >
 		<div data-theme="c" data-role="header" data-position="fixed" >
-		<a data-role="button" href="#pageHome"  class="ui-btn ui-shadow ui-corner-all ui-icon-bullets " ><img src="menu.png"></a>
+		<a data-role="button" href="#pageHome"  class="ui-btn ui-shadow ui-corner-all ui-icon-bullets " onClick="clear_mgs()"><img src="menu.png"></a>
 			<h3>Success</h3>
 	  </div>
 		<div data-role="content">
@@ -1617,7 +1842,7 @@
 <!--=====================delivery dealer==================-->
 		<div data-theme="c" data-role="page" id="page_del_conf">
             <div data-theme="c" data-role="header" data-position="fixed">
-			<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext"><img src="menu.png"></a>
+			<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext" onClick="clear_mgs()"><img src="menu.png"></a>
             <a data-role="button" data-rel="back"  data-iconpos="left" class="ui-btn-right"><img src="back.png"></a>
                 <h3>Distributor</h3>               
             </div>
@@ -1648,7 +1873,7 @@
 <!--=====================delivery confirm Page==================-->
 		<div data-theme="c" data-role="page" id="page_del_item">
             <div data-theme="c" data-role="header" data-position="fixed">
-			<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext"><img src="menu.png"></a>
+			<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext" onClick="clear_mgs()"><img src="menu.png"></a>
             <a data-role="button" data-rel="back"  data-iconpos="left" class="ui-btn-right"><img src="back.png"></a>
                 <h3>Delivery</h3>
             </div>
@@ -1694,7 +1919,7 @@
 <!-- ===================== delivery preview Page================== -->
 		<div data-theme="c" data-role="page" id="page_del_preview">
             <div data-theme="c" data-role="header" data-position="fixed">
-			<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext"><img src="menu.png"></a>
+			<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext" onClick="clear_mgs()"><img src="menu.png"></a>
             <a data-role="button" data-rel="back"  data-iconpos="left" class="ui-btn-right"><img src="back.png"></a>
                 <h3>Delivery Preview</h3>
             </div>
@@ -1727,7 +1952,7 @@
 		 <!-- ------------- Deliver Success -------------------- -->
 	<div data-theme="c" data-role="page" id="page_delivery_success" >
 		<div data-theme="c" data-role="header" data-position="fixed" >
-		<a data-role="button" href="#pageHome"  class="ui-btn ui-shadow ui-corner-all ui-icon-bullets " ><img src="menu.png"></a>
+		<a data-role="button" href="#pageHome"  class="ui-btn ui-shadow ui-corner-all ui-icon-bullets " onClick="clear_mgs()"><img src="menu.png"></a>
 			<h3>Success</h3>
 	  </div>
 		<div data-role="content">        	
@@ -1744,7 +1969,7 @@
 <!-- ===================== Complain Page================== -->
 		<div data-theme="c" data-role="page" id="page_complain">
             <div data-theme="c" data-role="header" data-position="fixed">
-			<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext"><img src="menu.png"></a>
+			<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext" onClick="clear_mgs()"><img src="menu.png"></a>
             <a data-role="button" data-rel="back"  data-iconpos="left" class="ui-btn-right"><img src="back.png"></a>
                 <h3>Complain</h3>
             </div>
@@ -1765,7 +1990,7 @@
          <!-- ===================== Complain Page================== -->
 		<div data-theme="c" data-role="page" id="page_complain_show">
             <div data-theme="c" data-role="header" data-position="fixed">
-			<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext"><img src="menu.png"></a>
+			<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext" onClick="clear_mgs()"><img src="menu.png"></a>
             <a data-role="button" data-rel="back"  data-iconpos="left" class="ui-btn-right"><img src="back.png"></a>
                 <h3>Feedback</h3>
             </div>
@@ -1786,7 +2011,7 @@
 <!-- ===================== Complain New Page================== -->
 		<div data-theme="c" data-role="page" id="page_complain_new">
             <div data-theme="c" data-role="header" data-position="fixed">
-			<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext"><img src="menu.png"></a>
+			<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext" onClick="clear_mgs()"><img src="menu.png"></a>
             <a data-role="button" data-rel="back"  data-iconpos="left" class="ui-btn-right"><img src="back.png"></a>
                 <h3>Feedback</h3>
             </div>
@@ -1805,7 +2030,7 @@
                     </td></tr>-->
                     
                     <tr><td>Feedback</td><td>
-                    <textarea name="complain_ref" id="complain_ref" value=""></textarea>
+                    <textarea name="complain_ref" id="complain_ref" value="" ></textarea>
                    <!-- <input type="text" name="complain_ref" id="complain_ref"  value="">-->
                    </td></tr>
                     
@@ -1829,7 +2054,7 @@
 <!-- ------------- Complain Success -------------------- -->
         <div data-theme="c" data-role="page" id="page_complain_success" >
             <div data-theme="c" data-role="header" data-position="fixed" >
-            <a data-role="button" href="#pageHome"  class="ui-btn ui-shadow ui-corner-all ui-icon-bullets " ><img src="menu.png"></a>
+            <a data-role="button" href="#pageHome"  class="ui-btn ui-shadow ui-corner-all ui-icon-bullets " onClick="clear_mgs()"><img src="menu.png"></a>
                 <h3>Success</h3>
           </div>
             <div data-role="content">
@@ -1847,7 +2072,7 @@
 <!-- ===================== Task Page================== -->
 		<div data-theme="c" data-role="page" id="page_task">
             <div data-theme="c" data-role="header" data-position="fixed">
-			<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext"><img src="menu.png"></a>
+			<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext" onClick="clear_mgs()"><img src="menu.png"></a>
             <a data-role="button" data-rel="back"  data-iconpos="left" class="ui-btn-right"><img src="back.png"></a>
                 <h3>Task</h3>
             </div>
@@ -1869,7 +2094,7 @@
         <!-- ===================== show Task Page================== -->
 		<div data-theme="c" data-role="page" id="page_task_show">
             <div data-theme="c" data-role="header" data-position="fixed">
-			<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext"><img src="menu.png"></a>
+			<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext" onClick="clear_mgs()"><img src="menu.png"></a>
             <a data-role="button" data-rel="back"  data-iconpos="left" class="ui-btn-right"><img src="back.png"></a>
                 <h3>Task</h3>
             </div>
@@ -1943,7 +2168,7 @@
     	
         <div data-theme="c" data-role="page" id="page_report">
             <div data-theme="c" data-role="header" data-position="fixed">
-			<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext"><img src="menu.png"></a>
+			<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext" onClick="clear_mgs()"><img src="menu.png"></a>
             <a data-role="button" data-rel="back"  data-iconpos="left" class="ui-btn-right"><img src="back.png"></a>
                 <h3>Region-Report</h3>
             </div>
@@ -2000,7 +2225,7 @@
         
 		<div data-theme="c" data-role="page" id="page_rpt">
             <div data-theme="c" data-role="header" data-position="fixed">
-			<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext"><img src="menu.png"></a>
+			<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext" onClick="clear_mgs()"><img src="menu.png"></a>
             <a data-role="button" data-rel="back"  data-iconpos="left" class="ui-btn-right"><img src="back.png"></a>
                 <h3>Schsduled Chemist</h3>
             </div>
@@ -2062,7 +2287,7 @@
 <!-- ===================== target & achievement Page================== -->
 		<div data-theme="c" data-role="page" id="page_tar_ach">
             <div data-theme="c" data-role="header" data-position="fixed">
-			<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext"><img src="menu.png"></a>
+			<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext" onClick="clear_mgs()"><img src="menu.png"></a>
             <a data-role="button" data-rel="back"  data-iconpos="left" class="ui-btn-right"><img src="back.png"></a>
                 <h3>Target & Achievement</h3>
             </div>
@@ -2099,7 +2324,7 @@
 <!-- ===================== today status Page================== -->
 		<div data-theme="c" data-role="page" id="page_today_st">
             <div data-theme="c" data-role="header" data-position="fixed">
-			<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext"><img src="menu.png"></a>
+			<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext" onClick="clear_mgs()"><img src="menu.png"></a>
             <a data-role="button" data-rel="back"  data-iconpos="left" class="ui-btn-right"><img src="back.png"></a>
                 <h3>Status Today</h3>
             </div>
