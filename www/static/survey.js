@@ -2086,6 +2086,14 @@ function lscVisitSubmit(){
 										$("#wait_image_visit_submit").hide();
 										$("#btn_visit_submit").show();
 										
+										$("#product_total_last").html('');
+										$("#product_list_tbl_cart").html('');
+										$("#product_total_cart").html('');
+										$("#item_combo_id").val('Search');
+										
+										
+										
+										
 										//image upload function									
 										//uploadPhotoV(lscPhoto, imageName);
 										
