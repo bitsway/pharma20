@@ -947,7 +947,7 @@ function marketNext() {
 									var mClientCat=mClientValueArray[2];
 									if(mClientID!=''){
 										//unscheduled_m_client_list+='<option value="'+mClientName+'-'+mClientID+'" >'+mClientName+'-'+mClientID+'</option>';
-										unscheduled_m_client_list+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><a  onClick="marketRetailerNextLV(\''+mClientName+'-'+mClientID+'\')"><font style="font-size:12px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+mClientName+'-'+mClientID+','+mClientCat+'</font></a></li>';
+										unscheduled_m_client_list+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><a  onClick="marketRetailerNextLV(\''+mClientName+'|'+mClientID+'\')"><font style="font-size:12px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+mClientName+'|'+mClientID+','+mClientCat+'</font></a></li>';
 										}								
 								}
 								//---class="ui-li-count" +'<img src="location.png" alt="" class="ui-li-icon ui-corner-none">'+'<img src="location.png" alt="">' 
@@ -1012,7 +1012,7 @@ function marketRetailerNextLV(lvalue) {
 function marketRetailerNext() {
 	$("#err_m_retailer_next").text("");
 	visit_client=$("#unscheduled_m_client_combo_id").val();		
-	
+	//alert (visit_client);
 	if(visit_client=='' || visit_client==0){
 			$("#err_m_retailer_next").text("Retailer required");
 		}else{
@@ -1098,7 +1098,8 @@ function marketRetailerNext() {
 								//$(".visit_distributor").html(visit_distributor_nameid);
 								$(".visit_client").html(visit_client);
 									
-								localStorage.visit_client=visit_client
+								//localStorage.visit_client=visit_client
+								localStorage.visit_client=visit_client.split('|')[1]
 								//localStorage.visitMarketStr=visitMarketStr
 								//localStorage.visit_distributor_nameid=visit_distributor_nameid
 								
@@ -1926,8 +1927,8 @@ function visitSubmit(){
 
 function lscVisitSubmit(){	
 	$("#errorChkVSubmit").text("");
-	
-	visitClientId=localStorage.visit_client.split('-')[1]	
+	//alert (localStorage.visit_client);
+	visitClientId=localStorage.visit_client
 	visit_type=localStorage.visit_type
 	scheduled_date=localStorage.scheduled_date
 	
@@ -1973,7 +1974,7 @@ function lscVisitSubmit(){
 	var now = $.now();
 	
 	//alert(photoRequired+','+lscPhoto);
-	
+	localStorage.payment_mode=$("#payment_mode").val();
 	if (photoRequired=='Yes' && lscPhoto==''){
 		$("#errorChkVSubmit").html('Picture required, Because of Bad marchandizing');
 	}else{
@@ -1993,7 +1994,7 @@ function lscVisitSubmit(){
 					$("#btn_visit_submit").hide();
 					$("#wait_image_visit_submit").show();		
 					//alert (localStorage.productOrderStr);
-					//alert(localStorage.base_url+'visitSubmit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&client_id='+visitClientId+'&visit_type='+visit_type+'&schedule_date='+scheduled_date+'&market_info='+marketInfoStr+'&order_info='+productOrderStr+'&merchandizing='+marchandizingInfoStr+'&campaign='+campaign_str+'&lat='+lat+'&long='+long+'&visit_photo='+imageName)
+					//$("#errorChkVSubmit").html(localStorage.base_url+'visitSubmit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&client_id='+visitClientId+'&visit_type='+visit_type+'&schedule_date='+scheduled_date+'&market_info='+marketInfoStr+'&order_info='+productOrderStr+'&merchandizing='+marchandizingInfoStr+'&campaign='+campaign_str+'&lat='+lat+'&long='+long+'&visit_photo='+imageName+'&payment_mode='+localStorage.payment_mode)
 					// ajax-------
 					//alert (localStorage.payment_mode);
 					$.ajax({
@@ -2020,11 +2021,11 @@ function lscVisitSubmit(){
 										//localStorage.scheduled_date=''
 										localStorage.marchandizingStr=''
 										
-										/*localStorage.marketInfoLSCStr=''
-										localStorage.marketInfoAkijStr=''
-										localStorage.marketInfo7RingsStr=''
-										localStorage.marketInfoShahStr=''
-										localStorage.marketInfoScanStr=''*/
+										localStorage.marketInfoLSCStr=''
+//										localStorage.marketInfoAkijStr=''
+//										localStorage.marketInfo7RingsStr=''
+//										localStorage.marketInfoShahStr=''
+//										localStorage.marketInfoScanStr=''
 										
 										localStorage.marketInfoStr=''
 										localStorage.marketInfoSubmitStr=''
