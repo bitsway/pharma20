@@ -156,6 +156,9 @@ function clear_autho(){
 		localStorage.sample_show_1='';
 		
 		localStorage.productOrder_change=''
+		
+		
+		localStorage.market_client=''
 		//----------- empty brand data from local storage
 		var brandList = localStorage.brand_list_string.split('<rd>');
 		var brandListLength=brandList.length	
@@ -186,9 +189,11 @@ function check_user() {
 	var cid=$("#cid").val().toUpperCase();
 	
 	//var apipath_base_photo_dm='http://127.0.0.1:8000/mrepbiopharma/syncmobile/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
-	var apipath_base_photo_dm='http://e2.businesssolutionapps.com/mrepbiopharma/syncmobile/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+	//var apipath_base_photo_dm='http://e2.businesssolutionapps.com/mrepbiopharma/syncmobile/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+	var apipath_base_photo_dm='http://e2.businesssolutionapps.com/mrepbiopharma/syncmobile_ofline/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	//var apipath_base_photo_dm='http://im-gp.com/dmpath/index.php?CID='+cid +'&HTTPPASS=e99business321cba'
 	
+	//$("#error_login").html(apipath_base_photo_dm);
 	
 	var user_id=$("#user_id").val();
 	var user_pass=$("#user_pass").val();
@@ -266,6 +271,9 @@ function check_user() {
 		localStorage.productGiftStr='';
 		localStorage.campaign_doc_str=''
 		localStorage.productSampleStr=''
+		
+		
+		localStorage.market_client=''
 	//-----
 	
 	if (user_id=="" || user_id==undefined || user_pass=="" || user_pass==undefined){
@@ -358,6 +366,8 @@ function check_user() {
 													region_string=resultArray[10];
 													localStorage.gift_string=resultArray[11];
 													localStorage.clientCat_string=resultArray[12];
+													
+													localStorage.market_client=resultArray[13];
 													
 													var productList=localStorage.productListStr.split('<rd>');
 													var productLength=productList.length;
@@ -905,94 +915,90 @@ function marketNext() {
 			
 			
 			var catType=$("#catCombo").val();
-			//var market_Id=marketNameId[1];
-			//var market_Id=market_name.replace(marketNameId[0]+"-","");
-			//$("#err_market_next").text(localStorage.base_url+'getMarketClientList?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&market_id='+market_Id+'&client_cat='+catType);
-			// ajax-------
-			$.ajax({
-				 type: 'POST',
-				 url: localStorage.base_url+'getMarketClientList?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&market_id='+market_Id+'&client_cat='+catType,
-				 success: function(result) {
-						
-						//alert(result);
-						if (result==''){
-							$("#err_market_next").text("Sorry Network not available");	
-							$("#wait_image_unschedule_market").hide();		
-							$("#btn_unschedule_market").show();
-						}else{					
-							var resultArray = result.split('<SYNCDATA>');			
-							if (resultArray[0]=='FAILED'){						
-								$("#err_market_next").html(resultArray[1]);
-								$("#wait_image_unschedule_market").hide();		
-								$("#btn_unschedule_market").show();
-							}else if (resultArray[0]=='SUCCESS'){
+			
+			//===========================Get market client list Start============================
+			
+			market_list=localStorage.market_client;
+			
+			if (market_list.indexOf(market_Id)==-1){
+					$("#err_market_next").text("Sorry Network not available");	
+					$("#wait_image_unschedule_market").hide();		
+					$("#btn_unschedule_market").show();
+			}else{					
+					var resultArray = market_list.split('</'+market_Id+'>');			
+					m_client_string=resultArray[0].replace('<'+market_Id+'>','');
 														
-								var m_client_string=resultArray[1];
-								//----------------
-								
-								var visit_type="Unscheduled";
-								var scheduled_date="";
-								
-								//-----------------------------------
-								
-								var mClientList = m_client_string.split('<rd>');
-								var mClientListShowLength=mClientList.length	
-								
-								//var unscheduled_m_client_list='<option value="0" > Select Retailer</option>'
-								var unscheduled_m_client_list=''
-								for (var i=0; i < mClientListShowLength; i++){
-									var mClientValueArray = mClientList[i].split('<fd>');
-									var mClientID=mClientValueArray[0];
-									var mClientName=mClientValueArray[1];
-									var mClientCat=mClientValueArray[2];
-									if(mClientID!=''){
-										//unscheduled_m_client_list+='<option value="'+mClientName+'-'+mClientID+'" >'+mClientName+'-'+mClientID+'</option>';
-										unscheduled_m_client_list+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><a  onClick="marketRetailerNextLV(\''+mClientName+'|'+mClientID+'\')"><font style="font-size:12px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+mClientName+'|'+mClientID+','+mClientCat+'</font></a></li>';
-										}								
-								}
-								//---class="ui-li-count" +'<img src="location.png" alt="" class="ui-li-icon ui-corner-none">'+'<img src="location.png" alt="">' 
-								
-								var unscheduled_m_client_combo_ob=$('#unscheduled_m_client_combo_id');
-//								unscheduled_m_client_combo_ob.empty()
-//								unscheduled_m_client_combo_ob.append(unscheduled_m_client_list);
-//								unscheduled_m_client_combo_ob[0].selectedIndex = 0;
-								
-								var unscheduled_m_client_combo_ob=$('#unscheduled_m_client_combo_id_lv');
-								unscheduled_m_client_combo_ob.empty()
-								unscheduled_m_client_combo_ob.append(unscheduled_m_client_list);
-																
-								$(".market").html(market_name);								
-								$(".visit_type").html(visit_type);								
-								$(".s_date").html(scheduled_date);
-								
-								localStorage.visit_type=visit_type
-								localStorage.scheduled_date=scheduled_date
-								
-								//-----------------------------------
-								$("#err_market_next").text("");
-								$("#wait_image_unschedule_market").hide();		
-								$("#btn_unschedule_market").show();
-								
-								//------- 
-								var url = "#page_market_ret";	
-								$.mobile.navigate(url);
-								
-								//unscheduled_m_client_combo_ob.selectmenu("refresh");
-								unscheduled_m_client_combo_ob.listview("refresh");
-								
-							}else{						
-								$("#err_market_next").html('Server Error');	
-								$("#wait_image_unschedule_market").hide();		
-								$("#btn_unschedule_market").show();						
-								}
-						}
-					  },
-				  error: function(result) {			  
-					  	$("#err_market_next").html('Network Timeout. Please try again.');
-					  	$("#wait_image_unschedule_market").hide();		
+					if 	(m_client_string=='Retailer not available'){
+						$("#err_market_next").text("Retailer not available");	
+						$("#wait_image_unschedule_market").hide();		
 						$("#btn_unschedule_market").show();
-				  }
-			 });//end ajax				
+						
+					}
+					else{
+						//----------------
+						
+						var visit_type="Unscheduled";
+						var scheduled_date="";
+						
+						//-----------------------------------
+									
+						var mClientList = m_client_string.split('<rd>');
+						var mClientListShowLength=mClientList.length	
+						
+						//var unscheduled_m_client_list='<option value="0" > Select Retailer</option>'
+						var unscheduled_m_client_list=''
+						for (var i=0; i < mClientListShowLength; i++){
+							var mClientValueArray = mClientList[i].split('<fd>');
+							var mClientID=mClientValueArray[0];
+							var mClientName=mClientValueArray[1];
+							var mClientCat=mClientValueArray[2];
+							//alert (catType);
+							
+							if(mClientID!=''){
+								if (catType!=''){
+									if (catType==mClientCat){
+										unscheduled_m_client_list+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><a  onClick="marketRetailerNextLV(\''+mClientName+'|'+mClientID+'\')"><font style="font-size:12px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+mClientName+'|'+mClientID+','+mClientCat+'</font></a></li>';
+									}
+	
+								}
+								else{
+									unscheduled_m_client_list+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><a  onClick="marketRetailerNextLV(\''+mClientName+'|'+mClientID+'\')"><font style="font-size:12px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+mClientName+'|'+mClientID+','+mClientCat+'</font></a></li>';
+								}	
+							}
+						 }
+					//---class="ui-li-count" +'<img src="location.png" alt="" class="ui-li-icon ui-corner-none">'+'<img src="location.png" alt="">' 
+					
+					var unscheduled_m_client_combo_ob=$('#unscheduled_m_client_combo_id');
+		//								unscheduled_m_client_combo_ob.empty()
+		//								unscheduled_m_client_combo_ob.append(unscheduled_m_client_list);
+		//								unscheduled_m_client_combo_ob[0].selectedIndex = 0;
+					
+					var unscheduled_m_client_combo_ob=$('#unscheduled_m_client_combo_id_lv');
+					unscheduled_m_client_combo_ob.empty()
+					unscheduled_m_client_combo_ob.append(unscheduled_m_client_list);
+													
+					$(".market").html(market_name);								
+					$(".visit_type").html(visit_type);								
+					$(".s_date").html(scheduled_date);
+					
+					localStorage.visit_type=visit_type
+					localStorage.scheduled_date=scheduled_date
+					
+					//-----------------------------------
+					$("#err_market_next").text("");
+					$("#wait_image_unschedule_market").hide();		
+					$("#btn_unschedule_market").show();
+					
+					//------- 
+					var url = "#page_market_ret";	
+					$.mobile.navigate(url);
+					
+					//unscheduled_m_client_combo_ob.selectmenu("refresh");
+					unscheduled_m_client_combo_ob.listview("refresh");
+					
+				}
+			}//end else
+			//============================Get market client list end===============================
 		}			
 }
 
@@ -5669,7 +5675,7 @@ function client_catList() {
 	
 	//alert (localStorage.clientListStr);
 	
-	for (var p=0; p<catArray.length-1; p++){
+	for (var p=0; p<catArray.length; p++){
 		var catId = catArray[p];
 		ob.prepend("<option value='"+ catId+"'>" + catId + "</option>");
 		}	

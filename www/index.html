@@ -8,81 +8,11 @@
 		<link rel="stylesheet" href="static/my.css" />
 		<link rel="stylesheet" href="static/themes/c.min.css" />
 		<link rel="stylesheet" href="static/themes/jquery.mobile.icons.min.css" />
-		
-		<link rel="stylesheet" href="static/jquery.mobile-1.4.0/jquery.mobile-1.4.0.min.css" />
-        <script src="static/jquery/1.10.2/jquery-1.10.2.min.js">   </script>
-        <script src="static/jquery.mobile-1.4.0/jquery.mobile-1.4.0.min.js">   </script>
+		<link rel="stylesheet" href="static/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css" />
+        
+		<script src="static/jquery/jquery-2.1.3.min.js">   </script>
+        <script src="static/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js">   </script>
 		<script src="static/survey.js"></script>		
-		
-        <!--chart-->
-		<link rel="stylesheet" href="static/jchart/styles/jchartfx.css" type="text/css" />
-		<script src="static/jchart/js/jchartfx.system.js"></script>
-        <script src="static/jchart/js/jchartfx.coreVector.js"></script>
-        <script src="static/jchart/js/jchartfx.advanced.js"></script>
-        <script src="static/jchart/js/jchartfx.animation.js"></script>
-		
-        <style type="text/css">
-			.jchartfx .Title {
-				 font-size:12pt;
-				 font-weight: bold;
-				 color:#000000;
-				 /*color:#D8EBEB*/
-			}
-		</style>
-		<!--end chart-->
-    
-    <script type="text/javascript" language="javascript">   
-	var chart1;
-	var chart2;
-    function loadChart()
-      {
-		//------------------------Brand wise		
-		chart1 = new cfx.Chart();
-		chart1.getData().setSeries(1);
-		var series1 = chart1.getSeries().getItem(0);		
-		chart1.setGallery(cfx.Gallery.Pie);
-		
-		var title1 = new cfx.TitleDockable();
-		title1.setText("Chemist Stock");
-		title1.setAlignment(cfx.StringAlignment.Center);		
-		chart1.getTitles().add(title1);
-		
-		//chart1.getDataGrid().setVisible(true);
-		//chart1.getPoints().getItem(0, 2).setColor("#FC7474");
-		
-		var gb;
-		gb = new cfx.GradientBackground();
-		gb.setType(cfx.GradientType.BackwardDiagonal);
-		gb.setColorFrom("#DEEFEF");
-		gb.setColorTo("#D6EBEB");
-		gb.getPosition().add(0);
-		gb.getPosition().add(1);
-		gb.getPosition().add(2);		
-		chart1.setBackground(gb);
-		
-		//chart1.getBorder().setColor("#D8EBEB");
-		
-		/*var border1 = new cfx.VectorBorder();
-		border1.setTemplate("BorderRoundShadow");
-		chart1.setBorder(border1);*/
-		
-		//chart1.setBorder(null);
-		
-		var dataPtype= new Array();
-		dataPtype=eval($('#retailerStock').val());
-		
-		chart1.setDataSource(dataPtype);
-		chart1.getAllSeries().getPointLabels().setVisible(true);
-		chart1.getLegendBox().setVisible(false);
-		
-		var divHolder1 = document.getElementById('ChartDivRetStock');
-		chart1.create(divHolder1); 
-		
-		//---------------------------------------------------------
-				
-	}
-</script>
-	
     
 	<script>	
 	$(document).ready(function(){
