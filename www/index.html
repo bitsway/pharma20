@@ -70,6 +70,13 @@
 		
 		$("#sch_date").val(localStorage.search_date);
 		
+		
+		
+		//Set total
+		$("#product_total_cart").html(localStorage.show_total);
+		$("#product_total_last").html(localStorage.show_total);
+		
+		
 		// delivery qty refresh during client change
 		jQuery("#delivery_retailer_cmb_id").change(function(){	
 			var productList=localStorage.productListStr.split('<rd>');
@@ -1301,8 +1308,8 @@
 </div> 
 
 <!--=====================order Page==================-->
-		<div data-theme="c" data-role="page" id="page_order">
-            <div data-theme="c" data-role="header" data-position="fixed">
+		<div data-theme="c" data-role="page" id="page_order" >
+            <div data-theme="c" data-role="header" data-position="fixed" data-tap-toggle="false">
 			<!--<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext"><img src="menu.png"></a>-->
             <!--<a data-role="button" data-rel="back"  data-icon="arrow-l" data-iconpos="left" class="ui-btn-right">Back</a>-->
                <!-- <h3>Order</h3>-->
@@ -1416,10 +1423,15 @@
 			
 				
 				
+                <br>
+                <br>
 				<div id="product_list_tbl_cart">
 
 				
 				</div>
+				
+                <br>
+                <br>
                 
                 <div id="product_total_cart" style=" color:#009191; font-weight:bold"></div>
 				

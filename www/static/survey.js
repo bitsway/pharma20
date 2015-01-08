@@ -190,7 +190,11 @@ function check_user() {
 	
 	//var apipath_base_photo_dm='http://127.0.0.1:8000/mrepbiopharma/syncmobile/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	//var apipath_base_photo_dm='http://e2.businesssolutionapps.com/mrepbiopharma/syncmobile/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+	
+	//Main
 	var apipath_base_photo_dm='http://e2.businesssolutionapps.com/mrepbiopharma/syncmobile_ofline/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+	//var apipath_base_photo_dm='http://127.0.0.1:8000/mrepbiopharma/syncmobile_ofline/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+	
 	//var apipath_base_photo_dm='http://im-gp.com/dmpath/index.php?CID='+cid +'&HTTPPASS=e99business321cba'
 	
 	//$("#error_login").html(apipath_base_photo_dm);
@@ -368,7 +372,7 @@ function check_user() {
 													localStorage.clientCat_string=resultArray[12];
 													
 													localStorage.market_client=resultArray[13];
-													
+													//alert (localStorage.market_client);
 													var productList=localStorage.productListStr.split('<rd>');
 													var productLength=productList.length;
 													
@@ -919,7 +923,7 @@ function marketNext() {
 			//===========================Get market client list Start============================
 			
 			market_list=localStorage.market_client;
-			
+			//alert (market_list);
 			if (market_list.indexOf(market_Id)==-1){
 					$("#err_market_next").text("Sorry Network not available");	
 					$("#wait_image_unschedule_market").hide();		
@@ -1029,7 +1033,7 @@ function marketRetailerNext() {
 			
 			
 			
-			var visitClientId=visit_client.replace(visitClientId_list[0]+"-","");
+			var visitClientId=visit_client.replace(visitClientId_list[0]+"|","");
 			
 			
 			//$("#err_m_retailer_next").text(localStorage.base_url+'getClientInfo?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&client_id='+visitClientId);
@@ -2033,17 +2037,19 @@ function lscVisitSubmit(){
 //										localStorage.marketInfoShahStr=''
 //										localStorage.marketInfoScanStr=''
 										
-										localStorage.marketInfoStr=''
-										localStorage.marketInfoSubmitStr=''
+										localStorage.marketInfoStr='';
+										localStorage.marketInfoSubmitStr='';
 										
-										localStorage.productOrderStr=''
-										localStorage.marchandizingInfoStr=''	
-										localStorage.visit_camp_list_str=''
-										localStorage.visit_camp_submit_str=''
-										visitCampaginTempArray=[]
-										visitCampaginArray=[]
+										localStorage.productOrderStr='';
+										localStorage.marchandizingInfoStr='';
+										localStorage.visit_camp_list_str='';
+										localStorage.visit_camp_submit_str='';
+										visitCampaginTempArray=[];
+										visitCampaginArray=[];
 										
-										localStorage.visit_page=""
+										localStorage.visit_page="";
+										
+										localStorage.show_total="";
 										
 										//----------- empty brand data from local storage
 										var brandList = localStorage.brand_list_string.split('<rd>');
@@ -4631,7 +4637,8 @@ function cart_data() {
 		var orderProductList=localStorage.productOrderStr.split('<rd>');
 		var orderProductLength=orderProductList.length;
 		//var product_tbl_cart_str='<ul id="cart_combo_id_lv" data-role="listview">';
-		var product_tbl_cart_str='<table width="100%" border="1"  cellpadding="0" cellspacing="0" style="border-radius:5px;">';
+		//var product_tbl_cart_str='<table width="100%" border="1"  cellpadding="0" cellspacing="0" style="border-radius:5px;">';
+		var product_tbl_cart_str='<ul  data-role="listview">';
 		var total_value=0
 		for (var j=0; j < orderProductLength; j++){
 			var orderProductIdQtyList=orderProductList[j].split('<fd>');
@@ -4644,20 +4651,22 @@ function cart_data() {
 				var total= parseFloat(product_price)* parseFloat(orderProductQty);
 				total_value=total_value+total;
 				//alert (orderProductQty);
-				product_tbl_cart_str=product_tbl_cart_str+'<tr  style="border-bottom:1px solid #D2EEE9;"><td width="20%" style="text-align:center; padding-left:5px;">'+orderProductQty+'</td><td width="80%" style="text-align:left;">&nbsp;&nbsp;'+product_name+'</td></tr>';
+				//product_tbl_cart_str=product_tbl_cart_str+'<tr  style="border-bottom:1px solid #D2EEE9;"><td width="20%" style="text-align:center; padding-left:5px;">'+orderProductQty+'</td><td width="80%" style="text-align:left;">&nbsp;&nbsp;'+product_name+'</td></tr>';
 				//alert (orderProductId);
 				
 
+				product_tbl_cart_str=product_tbl_cart_str+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin">'+'<table width="100%" border="0" id="order_tbl" cellpadding="0" cellspacing="0" style="border-radius:5px;">'+'<tr style="border-bottom:1px solid #D2EEE9;"><td width="60px" style="text-align:center; padding-left:5px;"><input  type="number" id="cart_qty'+orderProductId+'"  onBlur="getCartData_keyup(\''+orderProductId+'\')" value="'+orderProductQty+'" placeholder="0" </td><td  style="text-align:left;">'+ product_name.toUpperCase()+'</td></tr>'+'</table>'+'</li>'
 				
-				//product_tbl_cart_str=product_tbl_cart_str+//'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin">'+
+				
+				//product_tbl_cart_str=product_tbl_cart_str+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin">'+
 //				'<table width="100%" border="0" id="order_tbl" cellpadding="0" cellspacing="0" style="border-radius:5px;">'+
 //				'<tr style="border-bottom:1px solid #D2EEE9;"><td width="60px" style="text-align:center; padding-left:5px;">'+
 //				'<input onBlur="getCartData_keyup(\''+orderProductId+'\')" type="number" id="cart_qty'+orderProductId+'"  value="'+orderProductQty+'" placeholder="0" ></td>'+
 //				'<td  style="text-align:left;">'+
 //				'<font id="'+ orderProductId +'" onClick="tr_item(\''+orderProductId+'\')" >'+ product_name.toUpperCase()+'</font></td></tr>'+
-//				'</table>'//+
-//				//'</li>'
-				
+//				'</table>'+
+//				'</li>'
+//				
 
 
 				//product_tbl_cart_str=product_tbl_cart_str+
@@ -4676,18 +4685,22 @@ function cart_data() {
 				}
 		
 		}
-		//product_tbl_cart_str=product_tbl_cart_str//+'</ul>';		
+		product_tbl_cart_str=product_tbl_cart_str+'</ul>';		
 		
 		
-		localStorage.product_tbl_cart=product_tbl_cart_str+'</table>';
+		localStorage.product_tbl_cart=product_tbl_cart_str;//+'</table>';
 		localStorage.total_value=total_value.toFixed(2);
-		$("#product_list_tbl_cart").html('');
-		$("#product_list_tbl_cart").html(localStorage.product_tbl_cart);
+		$('#product_list_tbl_cart').empty();
+		$('#product_list_tbl_cart').append(localStorage.product_tbl_cart).trigger('create');
+		//$("#product_list_tbl_cart").html('');
+//		$("#product_list_tbl_cart").html(localStorage.product_tbl_cart);
+		
+		var show_total="Total Order Amount: "+localStorage.total_value + " BDT"
+		localStorage.show_total=show_total;
 		
 		
-		
-		$("#product_total_cart").html("Total Order Amount: "+localStorage.total_value + " BDT");
-		$("#product_total_last").html("Total Order Amount: "+localStorage.total_value + " BDT");
+		$("#product_total_cart").html(localStorage.show_total);
+		$("#product_total_last").html(localStorage.show_total);
 		//location.refresh();
 		
 		//var cart_combo_ob=$('#cart_combo_id_lv');
@@ -5664,6 +5677,11 @@ function clear_mgs(){
 	$("#err_m_retailer_next_cp").html('');
 	$("#err_market_next").html('');
 	$("#errorChkVSubmit").html('');
+	
+	$("#product_total_cart").html('');
+	$("#product_total_last").html('');
+	
+	
 }
 
 function client_catList() {	
