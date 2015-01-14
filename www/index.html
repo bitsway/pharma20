@@ -102,11 +102,18 @@
 		if(localStorage.visit_page=="YES"){
 			$("#sch_date").val(localStorage.scheduled_date);
 			
-			$(".market").html(localStorage.visitMarketStr);
+			//$(".market").html(localStorage.visitMarketStr);
 			$(".visit_distributor").html(localStorage.visit_distributor_nameid);
 			$(".visit_type").html(localStorage.visit_type);								
 			$(".s_date").html(localStorage.scheduled_date);
-			$(".visit_client").html(localStorage.visit_client);
+			//$(".visit_client").html(localStorage.visit_client);
+			
+			
+			
+			$(".market").html(localStorage.visit_market_show);
+			$(".visit_client").html(localStorage.visit_client_show);
+			
+			
 			mobile_off_flag=1;
 			
 			var url = "#page_visit";
@@ -1308,16 +1315,16 @@
 </div> 
 
 <!--=====================order Page==================-->
-		<div data-theme="c" data-role="page" id="page_order" >
-            <div data-theme="c" data-role="header" data-position="fixed" data-tap-toggle="false">
+		<div data-theme="c" data-role="page" id="page_order">
+            <div data-theme="c" data-role="header" data-position="fixed">
 			<!--<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext"><img src="menu.png"></a>-->
             <!--<a data-role="button" data-rel="back"  data-icon="arrow-l" data-iconpos="left" class="ui-btn-right">Back</a>-->
                <!-- <h3>Order</h3>-->
                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr>
                     <!--<td align="left"><a data-role="button" href="#page_visit"  ><img src="back.png"></a></td>-->
-                    <td width="50%"> <input id="item_combo_id" data-type="search"  placeholder="Search" value="Search" onFocus="check_search();"><!--<input type="text" data-iconpos="right" name="item_search" id="item_search"  >--></td>
-                    <td width="10%px"><!--<a data-role="button" onClick="search_item();" style="height:15px" ><img src="search.png"></a>--></td>
+                    <td width="50%"> <!--<input id="item_combo_id" data-type="search"  placeholder="Search" value="Search" onFocus="check_search();">--><input type="text" data-iconpos="right" name="item_search" id="item_search" onKeyUp="check_search_length()"  ></td>
+                    <td width="10%px"><a data-role="button" onClick="search_item();" style="height:15px" ><img src="search.png"></a></td>
                     <!--<td align="right"><a data-role="button" onClick="getOrderData();cart_data()" ><img src="next.png"></a>&nbsp;&nbsp;</td>-->
 					 <td align="right"><a data-role="button" onClick="getOrderData()" ><img src="next.png"></a>&nbsp;&nbsp;</td>
                   </tr>
@@ -1346,7 +1353,7 @@
 				<div><b></b><span class="visit_client" style="font-weight:bold;font-size:24px;color:#009191"></span></div>
 				
 				
-				<div id="product_list_tbl">
+				<div id="product_list_tbl" style="display:none" >
 				
 				
 				

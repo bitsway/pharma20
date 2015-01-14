@@ -159,6 +159,11 @@ function clear_autho(){
 		
 		
 		localStorage.market_client=''
+		
+		localStorage.visit_market_show='';
+		localStorage.visit_client_show='';
+		
+		
 		//----------- empty brand data from local storage
 		var brandList = localStorage.brand_list_string.split('<rd>');
 		var brandListLength=brandList.length	
@@ -915,6 +920,7 @@ function marketNext() {
 			
 			
 			//visitMarketStr
+			localStorage.visit_market_show=market_name
 			var market_Id=market_name.split('|')[1];
 			
 			
@@ -1109,6 +1115,7 @@ function marketRetailerNext() {
 								$(".visit_client").html(visit_client);
 									
 								//localStorage.visit_client=visit_client
+								localStorage.visit_client_show=visit_client
 								localStorage.visit_client=visit_client.split('|')[1]
 								//localStorage.visitMarketStr=visitMarketStr
 								//localStorage.visit_distributor_nameid=visit_distributor_nameid
@@ -2050,6 +2057,9 @@ function lscVisitSubmit(){
 										localStorage.visit_page="";
 										
 										localStorage.show_total="";
+										
+										$("#product_list_tbl").hide();
+										$("#item_search").val("");
 										
 										//----------- empty brand data from local storage
 										var brandList = localStorage.brand_list_string.split('<rd>');
@@ -5620,6 +5630,8 @@ function visitSubmit_doc(){
 										$("#wait_image_visit_submit").hide();
 										$("#btn_visit_submit").show();
 										
+										
+										
 										//image upload function									
 										//uploadPhotoV(lscPhoto, imageName);
 										
@@ -5706,6 +5718,14 @@ function check_search() {
 	if (check_s=='Search'){
 		$("#item_combo_id").val('');
 		$("#item_combo_id").focus();
+	}
+	
+}
+function check_search_length() {
+	var check_s=$("#item_search").val();
+	if (check_s.length > 0){
+		$("#product_list_tbl").show();
+		
 	}
 	
 }
