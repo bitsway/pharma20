@@ -296,7 +296,8 @@ function check_user() {
 		localStorage.photo_submit_url='';
 		
 		//alert(apipath_base_photo_dm);
-		
+		$("#error_login").html("");		
+		$("#loginButton").hide();
 		//----
 		$.ajax({
 			 type: 'POST',
@@ -326,8 +327,8 @@ function check_user() {
 							$("#error_login").html('Base URL not available');	
 						}else{
 							//--------------------------
-							$("#error_login").html("");		
-							$("#loginButton").hide();
+							//$("#error_login").html("");		
+//							$("#loginButton").hide();
 							$("#wait_image_login").show();
 							
 							localStorage.base_url=base_url;
