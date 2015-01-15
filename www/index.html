@@ -14,339 +14,7 @@
         <script src="static/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js">   </script>
 		<script src="static/survey.js"></script>		
     
-	<script>	
-	$(document).ready(function(){
-		$("#wait_image_login").hide();
-		$("#loginButton").show();
-		
-		$("#wait_image_schedule_date").hide();		
-		$("#btn_schedule_date").show();
-		
-		$("#wait_image_schedule_ret").hide();		
-		$("#btn_schedule_ret").show();
-		
-		$("#wait_image_unschedule_market").hide();		
-		$("#btn_unschedule_market").show();
-		
-		$("#wait_image_unschedule_market_ret").hide();		
-		$("#btn_unschedule_market_ret").show();
-		
-		$("#wait_image_visit_submit").hide();		
-		$("#btn_visit_submit").show();
-		
-		$("#wait_image_delivery_submit").hide();		
-		$("#btn_delivery_submit").show();
-		
-		$("#wait_image_delivery_dealer").hide();		
-		$("#btn_delivery_dealer").show();
-		
-		$("#wait_image_profile_market").hide();		
-		$("#btn_profile_market").show();
-		
-		$("#wait_image_profile_market_ret").hide();		
-		$("#btn_profile_market_ret").show();
-		
-		$("#wait_image_profile_update").hide();		
-		$("#btn_profile_update").show();
-		
-		$("#wait_image_visit_plan_market").hide();		
-		$("#btn_visit_plan_market").show();
-		
-		$("#wait_image_visit_plan_submit").hide();		
-		$("#btn_visit_plan_submit").show();
-		
-		$("#wait_image_visit_report").hide();
-		
-		$("#wait_image_complain_submit").hide();
-		$("#btn_complain_submit").show();	
-		
-		$("#wait_image_region_report").hide();
-		
-		client_catList();
-		first_page();
-		
-		$("#product_list_tbl").html(localStorage.product_tbl_str);
-		$("#del_product_list_tbl").html(localStorage.product_tbl_del_str);
-		
-		$("#sch_date").val(localStorage.search_date);
-		
-		
-		
-		//Set total
-		$("#product_total_cart").html(localStorage.show_total);
-		$("#product_total_last").html(localStorage.show_total);
-		
-		
-		// delivery qty refresh during client change
-		jQuery("#delivery_retailer_cmb_id").change(function(){	
-			var productList=localStorage.productListStr.split('<rd>');
-			var productLength=productList.length;
-			
-			for (var i=0; i < productLength; i++){				
-				var deleveryItemArray = productList[i].split('<fd>');
-				var productId=deleveryItemArray[0];											
-				jQuery("#delivery_qty"+productId).val("");
-			}				
-		});
-		
-		//------
-		
-		//===============Map=============
-		$("#desc").val(localStorage.map_desc);
-		$("#c_point").val(localStorage.c_point);		
-		//==============Map end===========
-		
-		
-		
-		//================== Redirect to visit page
-		if(localStorage.visit_page=="YES"){
-			$("#sch_date").val(localStorage.scheduled_date);
-			
-			//$(".market").html(localStorage.visitMarketStr);
-			$(".visit_distributor").html(localStorage.visit_distributor_nameid);
-			$(".visit_type").html(localStorage.visit_type);								
-			$(".s_date").html(localStorage.scheduled_date);
-			//$(".visit_client").html(localStorage.visit_client);
-			
-			
-			
-			$(".market").html(localStorage.visit_market_show);
-			$(".visit_client").html(localStorage.visit_client_show);
-			
-			
-			mobile_off_flag=1;
-			
-			var url = "#page_visit";
-			$.mobile.navigate(url);		
-		}
-		getOrder_load();
-	});
 	
-	 <!--============== Schedule Client Combo===========-->
-	$.mobile.document.on( "listviewcreate", "#schedule_client_combo_id-menu", function( e ) {
-        var input,
-            listbox = $( "#schedule_client_combo_id-listbox" ),
-            form = listbox.jqmData( "filter-form" ),
-            listview = $( e.target );
-        if ( !form ) {
-            input = $( "<input id='clientSearch' data-type='search'></input>" );
-            form = $( "<form></form>" ).append( input );
-            input.textinput();
-            $( "#schedule_client_combo_id-listbox" )
-                .prepend( form )
-                .jqmData( "filter-form", form );
-        }
-        listview.filterable({ input: input });
-    })
-    .on( "pagebeforeshow pagehide", "#schedule_client_combo_id-dialog", function( e ) {
-        var form = $( "#schedule_client_combo_id-listbox" ).jqmData( "filter-form" ),
-            placeInDialog = ( e.type === "pagebeforeshow" ),
-            destination = placeInDialog ? $( e.target ).find( ".ui-content" ) : $( "#schedule_client_combo_id-listbox" );
-        form
-            .find( "input" )
-            .textinput( "option", "inset", !placeInDialog )
-            .end()
-            .prependTo( destination );
-    });
-	
-	
-	//------------------------------------- Unschedule market combo -----------------------------
-	
-	$.mobile.document.on( "listviewcreate", "#unschedule_market_combo_id-menu", function( e ) {
-        var input,
-            listbox = $( "#unschedule_market_combo_id-listbox" ),
-            form = listbox.jqmData( "filter-form" ),
-            listview = $( e.target );
-        if ( !form ) {
-            input = $( "<input id='clientSearch' data-type='search'></input>" );
-            form = $( "<form></form>" ).append( input );
-            input.textinput();
-            $( "#unschedule_market_combo_id-listbox" )
-                .prepend( form )
-                .jqmData( "filter-form", form );
-        }
-        listview.filterable({ input: input });
-    })
-    .on( "pagebeforeshow pagehide", "#unschedule_market_combo_id-dialog", function( e ) {
-        var form = $( "#unschedule_market_combo_id-listbox" ).jqmData( "filter-form" ),
-            placeInDialog = ( e.type === "pagebeforeshow" ),
-            destination = placeInDialog ? $( e.target ).find( ".ui-content" ) : $( "#unschedule_market_combo_id-listbox" );
-        form
-            .find( "input" )
-            .textinput( "option", "inset", !placeInDialog )
-            .end()
-            .prependTo( destination );
-    });	
-	
-	<!-------------------  Unschedule Market Client/retailer list-->
-	$.mobile.document.on( "listviewcreate", "#unscheduled_m_client_combo_id-menu", function( e ) {
-        var input,
-            listbox = $( "#unscheduled_m_client_combo_id-listbox" ),
-            form = listbox.jqmData( "filter-form" ),
-            listview = $( e.target );
-        if ( !form ) {
-            input = $( "<input id='clientSearch' data-type='search'></input>" );
-            form = $( "<form></form>" ).append( input );
-            input.textinput();
-            $( "#unscheduled_m_client_combo_id-listbox" )
-                .prepend( form )
-                .jqmData( "filter-form", form );
-        }
-        listview.filterable({ input: input });
-    })
-    .on( "pagebeforeshow pagehide", "#unscheduled_m_client_combo_id-dialog", function( e ) {
-        var form = $( "#unscheduled_m_client_combo_id-listbox" ).jqmData( "filter-form" ),
-            placeInDialog = ( e.type === "pagebeforeshow" ),
-            destination = placeInDialog ? $( e.target ).find( ".ui-content" ) : $( "#unscheduled_m_client_combo_id-listbox" );
-        form
-            .find( "input" )
-            .textinput( "option", "inset", !placeInDialog )
-            .end()
-            .prependTo( destination );
-    });
-
-
-	//-------------------------------------Delivery Distributor Combo list -----------------------------
-	
-	$.mobile.document.on( "listviewcreate", "#delivery_distributor_cmb_id-menu", function( e ) {
-        var input,
-            listbox = $( "#delivery_distributor_cmb_id-listbox" ),
-            form = listbox.jqmData( "filter-form" ),
-            listview = $( e.target );
-        if ( !form ) {
-            input = $( "<input id='clientSearch' data-type='search'></input>" );
-            form = $( "<form></form>" ).append( input );
-            input.textinput();
-            $( "#delivery_distributor_cmb_id-listbox" )
-                .prepend( form )
-                .jqmData( "filter-form", form );
-        }
-        listview.filterable({ input: input });
-    })
-    .on( "pagebeforeshow pagehide", "#delivery_distributor_cmb_id-dialog", function( e ) {
-        var form = $( "#delivery_distributor_cmb_id-listbox" ).jqmData( "filter-form" ),
-            placeInDialog = ( e.type === "pagebeforeshow" ),
-            destination = placeInDialog ? $( e.target ).find( ".ui-content" ) : $( "#delivery_distributor_cmb_id-listbox" );
-        form
-            .find( "input" )
-            .textinput( "option", "inset", !placeInDialog )
-            .end()
-            .prependTo( destination );
-    });
-
-	//-------------------------------------Delivery distributor client/ retailer -----------------------------
-	
-	$.mobile.document.on( "listviewcreate", "#delivery_retailer_cmb_id-menu", function( e ) {
-        var input,
-            listbox = $( "#delivery_retailer_cmb_id-listbox" ),
-            form = listbox.jqmData( "filter-form" ),
-            listview = $( e.target );
-        if ( !form ) {
-            input = $( "<input id='clientSearch' data-type='search'></input>" );
-            form = $( "<form></form>" ).append( input );
-            input.textinput();
-            $( "#delivery_retailer_cmb_id-listbox" )
-                .prepend( form )
-                .jqmData( "filter-form", form );
-        }
-        listview.filterable({ input: input });
-    })
-    .on( "pagebeforeshow pagehide", "#delivery_retailer_cmb_id-dialog", function( e ) {
-        var form = $( "#delivery_retailer_cmb_id-listbox" ).jqmData( "filter-form" ),
-            placeInDialog = ( e.type === "pagebeforeshow" ),
-            destination = placeInDialog ? $( e.target ).find( ".ui-content" ) : $( "#delivery_retailer_cmb_id-listbox" );
-        form
-            .find( "input" )
-            .textinput( "option", "inset", !placeInDialog )
-            .end()
-            .prependTo( destination );
-    });
-		
-	
-	//------------------------------------- visit plan market -----------------------------
-	$.mobile.document.on( "listviewcreate", "#visit_market_cmb_id-menu", function( e ) {
-        var input,
-            listbox = $( "#visit_market_cmb_id-listbox" ),
-            form = listbox.jqmData( "filter-form" ),
-            listview = $( e.target );
-        if ( !form ) {
-            input = $( "<input id='clientSearch' data-type='search'></input>" );
-            form = $( "<form></form>" ).append( input );
-            input.textinput();
-            $( "#visit_market_cmb_id-listbox" )
-                .prepend( form )
-                .jqmData( "filter-form", form );
-        }
-        listview.filterable({ input: input });
-    })
-    .on( "pagebeforeshow pagehide", "#visit_market_cmb_id-dialog", function( e ) {
-        var form = $( "#visit_market_cmb_id-listbox" ).jqmData( "filter-form" ),
-            placeInDialog = ( e.type === "pagebeforeshow" ),
-            destination = placeInDialog ? $( e.target ).find( ".ui-content" ) : $( "#visit_market_cmb_id-listbox" );
-        form
-            .find( "input" )
-            .textinput( "option", "inset", !placeInDialog )
-            .end()
-            .prependTo( destination );
-    });
-
-	//------------------------------------- visit plan client/ retailer -----------------------------
-	
-	$.mobile.document.on( "listviewcreate", "#visit_plan_client_cmb_id-menu", function( e ) {
-        var input,
-            listbox = $( "#visit_plan_client_cmb_id-listbox" ),
-            form = listbox.jqmData( "filter-form" ),
-            listview = $( e.target );
-        if ( !form ) {
-            input = $( "<input id='clientSearch' data-type='search'></input>" );
-            form = $( "<form></form>" ).append( input );
-            input.textinput();
-            $( "#visit_plan_client_cmb_id-listbox" )
-                .prepend( form )
-                .jqmData( "filter-form", form );
-        }
-        listview.filterable({ input: input });
-    })
-    .on( "pagebeforeshow pagehide", "#visit_plan_client_cmb_id-dialog", function( e ) {
-        var form = $( "#visit_plan_client_cmb_id-listbox" ).jqmData( "filter-form" ),
-            placeInDialog = ( e.type === "pagebeforeshow" ),
-            destination = placeInDialog ? $( e.target ).find( ".ui-content" ) : $( "#visit_plan_client_cmb_id-listbox" );
-        form
-            .find( "input" )
-            .textinput( "option", "inset", !placeInDialog )
-            .end()
-            .prependTo( destination );
-    });
-		
-	
-	//------------------------------------- marchandizing Item  -----------------------------
-	
-	$.mobile.document.on( "listviewcreate", "#marchandizing_item_id-menu", function( e ) {
-        var input,
-            listbox = $( "#marchandizing_item_id-listbox" ),
-            form = listbox.jqmData( "filter-form" ),
-            listview = $( e.target );
-        if ( !form ) {
-            input = $( "<input id='clientSearch' data-type='search'></input>" );
-            form = $( "<form></form>" ).append( input );
-            input.textinput();
-            $( "#marchandizing_item_id-listbox" )
-                .prepend( form )
-                .jqmData( "filter-form", form );
-        }
-        listview.filterable({ input: input });
-    })
-    .on( "pagebeforeshow pagehide", "#marchandizing_item_id-dialog", function( e ) {
-        var form = $( "#marchandizing_item_id-listbox" ).jqmData( "filter-form" ),
-            placeInDialog = ( e.type === "pagebeforeshow" ),
-            destination = placeInDialog ? $( e.target ).find( ".ui-content" ) : $( "#marchandizing_item_id-listbox" );
-        form
-            .find( "input" )
-            .textinput( "option", "inset", !placeInDialog )
-            .end()
-            .prependTo( destination );
-    });
-    </script>
 	<style>
 	table.tbl_preview tr td { border:1px solid #5FAFAF; background-color:#EFF8F8;}
 	
@@ -389,10 +57,18 @@
 			<img style="width:100%; height:100px"  src="images_2.jpg">
             <div data-role="content">
 				
-				<div id="myerror" style="color:#C00;">				
+				<div id="myerror" style="color:#C00;">		
+				
+				
 				</div>
-                 <a id="sub_button" data-role="button" style="height:100px;" onClick="addMarketList();reset_doc()" ><img style="padding-top:0px; padding-bottom:0px;" src="chemist_visit.png"></a>
-               <!-- <a id="sub_button" data-role="button" style="height:100px;" onClick="addMarketListCp()" ><img style="padding-top:0px; padding-bottom:0px;" src="chemist_profile.png"></a>
+				
+				
+				<div id="menu_show" >
+				
+				</div>
+				
+                 <!-- <a id="sub_button" data-role="button" style="height:100px;" onClick="addMarketList();reset_doc()" ><img style="padding-top:0px; padding-bottom:0px;" src="chemist_visit.png"></a>
+               <a id="sub_button" data-role="button" style="height:100px;" onClick="addMarketListCp()" ><img style="padding-top:0px; padding-bottom:0px;" src="chemist_profile.png"></a>
                 <a id="sub_button" data-role="button" style="height:100px;" onClick="addMarketList();set_doc()" ><img style="padding-top:0px; padding-bottom:0px;" src="doctor_visit.png"></a>
                 <a id="sub_button" data-role="button" style="height:100px;" onClick="addMarketListCp()" ><img style="padding-top:0px; padding-bottom:0px;" src="doctor_profile.png"></a>
                 
@@ -460,8 +136,7 @@
                     <form>		
 						<input name="cid" id="cid"  value="" type="text" placeholder="CID">			
                         <input name="user_id" id="user_id"  value="" type="text" placeholder="User ID">
-						 <input type="number" name="user_pass" id="user_pass"  value="" placeholder="Password">
-                       <!-- <input type="password" name="user_pass" id="user_pass"  value="" placeholder="Password">-->
+                        <input type="number" name="user_pass" id="user_pass"  value="" placeholder="Password">
                     </form>						
 				
 				<a data-role="button" id="loginButton" onClick="check_user();" >Sync</a>
@@ -571,11 +246,11 @@
                     <option value="0" >Select Market</option>
                 </select>-->
                 <!--Client Catagory Combo-->
-				
+				<div id="ret_cat">
 				 <select id="catCombo" width="60%" data-native-menu="false">
                 <option value="" >Category</option>
                 </select>
-				
+				</div>
 				<!--Client Catagory Combo End-->
                 <input id="unschedule_market_combo_id" data-type="search"  placeholder="Search">
 				
@@ -607,7 +282,7 @@
             </div>
 			
             <div data-role="content" style="margin-top:0px; padding-top:0px;">            	
-            	<div ><font style="font-weight:bold; font-size:13px; color:#666">Visit > Market > Chemist</font></div><br>
+            	<div id="v_path" ><font style="font-weight:bold; font-size:13px; color:#666">Visit > Market > Chemist</font></div><br>
 				
 			
 				<div id="err_m_retailer_next" style="color:#C00"></div>
@@ -668,6 +343,19 @@
                 </select>-->
                 
               <!-- List Test -------------------->
+			  	 <select id="catCombo_profile" width="60%" data-native-menu="false">
+                <option value="" >Category</option>
+                </select>
+				
+				<!--Client Catagory Combo End-->
+             <!--   <input id="unschedule_market_combo_id" data-type="search"  placeholder="Search">
+				
+                <ul id="unschedule_market_combo_id_lv" data-role="listview" data-filter="true" data-input="#unschedule_market_combo_id" data-inset="true">
+                </ul>-->
+                
+                
+                
+                <br/><br/>
                 <input id="profile_market_cmb_id" data-type="search"  placeholder="Search"> 
 				
                 <ul id="profile_market_cmb_id_lv" data-role="listview" data-filter="true" data-input="#profile_market_cmb_id" data-inset="true">
@@ -832,10 +520,9 @@
 				<div id="myerror" style="color:#C00"></div>
 				<ul data-inset="true"  data-role="listview">
 					<li >
-						<div><b>Visit Type & Date:</b><span class="visit_type"></span>&nbsp;,&nbsp;<span class="s_date"></span></div>						
-						<div><b>Market :</b><span class="market"></span></div>
-                        <div><b>Distributor :</b><span class="visit_distributor"></span></div>
-                        <div><b>Doctor :</b><span class="visit_client" style="font-weight:bold"></span></div>
+						<!--<div><b>Visit Type & Date:</b><span class="visit_type"></span>&nbsp;,&nbsp;<span class="s_date"></span></div>	-->					
+						<div><b></b><span class="market" style="font-size:24px;color:#009191"></span></div>
+						<div><b></b><span class="visit_client" style="font-weight:bold;font-size:24px;color:#009191"></span></div>
 					</li>
 				</ul>
                 <ul data-inset="true"  data-role="listview" class="ui-nodisc-icon ui-alt-icon">
@@ -869,7 +556,9 @@
 			
 		 </div><!--/page-->
          <!--=====================Doctor Campaign Page==================-->
-		<div data-theme="c" data-role="page" id="page_doctor_campaign">
+		 
+		 
+		 <div data-theme="c" data-role="page" id="page_doctor_campaign">
             <div data-theme="c" data-role="header" data-position="fixed">
 			<!--<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext"><img src="menu.png"></a>-->
             <!--<a data-role="button" data-rel="back"  data-icon="arrow-l" data-iconpos="left" class="ui-btn-right">Back</a>-->
@@ -877,7 +566,7 @@
                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr>
                     <!--<td align="left"><a data-role="button" href="#page_visit"  ><img src="back.png"></a></td>-->
-                    <td width="50%"><input type="text" data-iconpos="right" name="item_search_doctor_campaign" id="item_search_doctor_campaign"  ></td>
+                    <td width="70%"><!--<input type="text" data-iconpos="right" name="campaign_combo_id" id="campaign_combo_id"  >--><input type="text" data-iconpos="right" name="item_search_doctor_campaign" id="item_search_doctor_campaign"  ></td>
                     <td width="10%px"><a data-role="button" onClick="search_item_doctor_campaign();" style="height:15px" ><img src="search.png"></a></td>
                     <td align="right"><a style="height:20px; width:27px" data-role="button" onClick="getDocCampaignData();" ><img src="done.png"></a>&nbsp;&nbsp;</td>
                   </tr>
@@ -891,11 +580,14 @@
 						<div><b>Visit Type & Date:</b><span class="visit_type"></span>&nbsp;&nbsp;<span class="s_date"></span></div>						
 						<div><b>Market :</b><span class="market"></span></div>
                         <div><b>Distributor :</b><span class="visit_distributor"></span></div>
-                        <div><b>Chemist :</b><span class="visit_client" style="font-weight:bold"></span></div>                        
+                        <div><b>Doctor :</b><span class="visit_client" style="font-weight:bold"></span></div>                        
 					</li>					
 				</ul>
-				<div id="doctor_campaign_list_tbl"></div>
+				<br>
+                <br>
+				<div id="doctor_campaign_list_tbl">abc</div>
 				
+                <br>
                 <br>
 			  
 			
@@ -925,6 +617,8 @@
             </div>
 			
 		 </div><!--/page-->
+		 
+		
          
     <!--=====================Doctor Gift Page==================-->
 		<div data-theme="c" data-role="page" id="page_doctor_gift">
@@ -935,8 +629,8 @@
                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr>
                     <!--<td align="left"><a data-role="button" href="#page_visit"  ><img src="back.png"></a></td>-->
-                    <td width="50%"><input type="text" data-iconpos="right" name="item_search_doctor_campaign" id="item_search_doctor_campaign"  ></td>
-                    <td width="10%px"><a data-role="button" onClick="search_item_doctor_campaign();" style="height:15px" ><img src="search.png"></a></td>
+                    <td width="70%"><input type="text" data-iconpos="right" name="gift_combo_id" id="gift_combo_id"  ><!--<input type="text" data-iconpos="right" name="item_search_doctor_campaign" id="item_search_doctor_campaign"  >--></td>
+                    <td width="10%px"><!--<a data-role="button" onClick="search_item_doctor_campaign();" style="height:15px" ><img src="search.png"></a>--></td>
                     <td align="right"><a style="height:20px; width:27px" data-role="button" onClick="getDocGiftData();" ><img src="done.png"></a>&nbsp;&nbsp;</td>
                   </tr>
                 </table>
@@ -952,6 +646,8 @@
                         <div><b>Doctor :</b><span class="visit_client" style="font-weight:bold"></span></div>                        
 					</li>					
 				</ul>
+				<br>
+                <br>
 				<div id="doctor_gift_list_tbl">abc</div>
 				
                 <br>
@@ -994,8 +690,8 @@
                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr>
                     <!--<td align="left"><a data-role="button" href="#page_visit"  ><img src="back.png"></a></td>-->
-                    <td width="50%"><input type="text" data-iconpos="right" name="item_search_doctor_campaign" id="item_search_doctor_campaign"  ></td>
-                    <td width="10%px"><a data-role="button" onClick="search_item_doctor_campaign();" style="height:15px" ><img src="search.png"></a></td>
+                    <td width="70%"><input type="text" data-iconpos="right" name="sample_combo_id" id="sample_combo_id"  ><!--<input type="text" data-iconpos="right" name="item_search_doctor_campaign" id="item_search_doctor_campaign"  >--></td>
+                    <td width="10%px"><!--<a data-role="button" onClick="search_item_doctor_campaign();" style="height:15px" ><img src="search.png"></a>--></td>
                     <td align="right"><a style="height:20px; width:27px" data-role="button" onClick="getDocSampleData();" ><img src="done.png"></a>&nbsp;&nbsp;</td>
                   </tr>
                 </table>
@@ -1011,6 +707,9 @@
                         <div><b>Doctor :</b><span class="visit_client" style="font-weight:bold"></span></div>                        
 					</li>					
 				</ul>
+				
+				<br>
+                <br>
 				<div id="doctor_sample_list_tbl">abc</div>
 				
                 <br>
@@ -1316,17 +1015,20 @@
 </div> 
 
 <!--=====================order Page==================-->
-		<div data-theme="c" data-role="page" id="page_order">
-             <div data-theme="c" data-role="header" data-position="fixed" data-tap-toggle="false">
+		
+		<div data-theme="c" data-role="page" id="page_order" >
+            <div data-theme="c" data-role="header" data-position="fixed" data-tap-toggle="false">
 			<!--<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext"><img src="menu.png"></a>-->
             <!--<a data-role="button" data-rel="back"  data-icon="arrow-l" data-iconpos="left" class="ui-btn-right">Back</a>-->
                <!-- <h3>Order</h3>-->
                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr>
                     <!--<td align="left"><a data-role="button" href="#page_visit"  ><img src="back.png"></a></td>-->
-                    <td width="50%"> <!--<input id="item_combo_id" data-type="search"  placeholder="Search" value="Search" onFocus="check_search();">--><input type="text" data-iconpos="right" name="item_search" id="item_search" onKeyUp="check_search_length()"  ></td>
-                    <td width="10%px"><a data-role="button" onClick="search_item();" style="height:15px" ><img src="search.png"></a></td>
-                    <!--<td align="right"><a data-role="button" onClick="getOrderData();cart_data()" ><img src="next.png"></a>&nbsp;&nbsp;</td>-->
+                    <td width="50%"> 
+					<form class="ui-filterable">
+					<input id="item_combo_id" data-type="search"  placeholder="Search"  </form></td>
+                    <td width="10%px"></td>
+                   
 					 <td align="right"><a data-role="button" onClick="getOrderData()" ><img src="next.png"></a>&nbsp;&nbsp;</td>
                   </tr>
                 </table>
@@ -1354,7 +1056,7 @@
 				<div><b></b><span class="visit_client" style="font-weight:bold;font-size:24px;color:#009191"></span></div>
 				
 				
-				<div id="product_list_tbl" style="display:none" >
+				<div id="product_list_tbl">
 				
 				
 				
