@@ -50,7 +50,7 @@ function cancelVisitPage(){
 	localStorage.visitMarketStr=""
 	localStorage.visit_distributor_nameid=""
 	localStorage.visit_type=""
-	localStorage.scheduled_date=""
+	localStorage.scheduled_date="" 
 	localStorage.visit_client=""
 	
 	localStorage.productListStr='';
@@ -302,6 +302,8 @@ function check_user() {
 		
 		//alert(apipath_base_photo_dm);
 		$("#loginButton").hide();
+		$("#wait_image_login").show();
+		
 		//----
 		$.ajax({
 			 type: 'POST',
@@ -634,7 +636,7 @@ function check_user() {
 					}else{
 						$("#wait_image_login").hide();
 						$("#loginButton").show();
-						$("#error_login").html('Base URL Settings Incorrect');	
+						$("#error_login").html('Login Failed. Please Check CID, UserID, Password.');	
 					}
 					
 				}
@@ -642,7 +644,7 @@ function check_user() {
 			  error: function(result) {			  	   
 				  $("#wait_image_login").hide();
 				  $("#loginButton").show();
-				  $("#error_login").html('Network Timeout. Please try again. to get Base URL');	
+				  $("#error_login").html('Network  Timeout. Please Check Internet Connection');	
 				//  $("#error_login").html(localStorage.base_url+'check_user?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode);
 			  }
 		});//end ajax
