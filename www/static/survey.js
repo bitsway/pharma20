@@ -370,7 +370,7 @@ function check_user() {
 													
 													localStorage.synccode=resultArray[1];
 													localStorage.marketListStr=resultArray[2];
-													//alert (resultArray[3]);
+													//alert (resultArray[2]);
 													localStorage.productListStr=resultArray[3];
 													localStorage.marchandizingItem=resultArray[4];
 													localStorage.distributorListStr=resultArray[5];								
@@ -473,14 +473,15 @@ function check_user() {
 													
 													
 													$("#product_list_tbl").html(localStorage.product_tbl_str);
-													//$("#doctor_campaign_list_tbl").html(localStorage.product_tbl_str_doc_campaign);
-													$('#doctor_campaign_list_tbl').empty();
-													$('#doctor_campaign_list_tbl').append(localStorage.product_tbl_str_doc_campaign).trigger('create');
+													$("#doctor_campaign_list_tbl").html(localStorage.product_tbl_str_doc_campaign);
+													
+													//$('#doctor_campaign_list_tbl').empty();
+													//$('#doctor_campaign_list_tbl').append(localStorage.product_tbl_str_doc_campaign).trigger('create');
 													
 													
-													//$("#doctor_sample_list_tbl").html(localStorage.product_tbl_str_doc_sample);
-													$('#doctor_sample_list_tbl').empty();
-													$('#doctor_sample_list_tbl').append(localStorage.product_tbl_str_doc_sample).trigger('create');
+													$("#doctor_sample_list_tbl").html(localStorage.product_tbl_str_doc_sample);
+													//$('#doctor_sample_list_tbl').empty();
+													//$('#doctor_sample_list_tbl').append(localStorage.product_tbl_str_doc_sample).trigger('create');
 													
 													
 													
@@ -497,7 +498,7 @@ function check_user() {
 														//alert ('nadira');
 														//var gift_tbl_doc='<table width="100%" border="0"  cellpadding="0" cellspacing="0" style="border-radius:5px;">';
 														
-														var gift_tbl_doc='<ul id="gift_combo_id_lv" data-role="listview"  data-filter="true" data-input="#gift_combo_id" data-inset="true" data-filter-reveal="true">';
+														var gift_tbl_doc='<ul id="gift_combo_id_lv" data-role="listview"  data-filter="true" data-input="#gift_combo_id" data-inset="true" >';
 														for (var j=0; j < giftLength; j++){
 															var gifttArray = giftList[j].split('<fd>');
 															var gift_id=gifttArray[0];	
@@ -520,10 +521,10 @@ function check_user() {
 														gift_tbl_doc=gift_tbl_doc+'</ul>';//+'</table>'
 													
 														localStorage.gift_tbl_doc=gift_tbl_doc
-														//$("#doctor_gift_list_tbl").html(localStorage.gift_tbl_doc);
+														$("#doctor_gift_list_tbl").html(localStorage.gift_tbl_doc);
 														
-														$('#doctor_gift_list_tbl').empty();
-														$('#doctor_gift_list_tbl').append(localStorage.gift_tbl_doc).trigger('create');
+														//$('#doctor_gift_list_tbl').empty();
+														//$('#doctor_gift_list_tbl').append(localStorage.gift_tbl_doc).trigger('create');
 													
 													}
 													//--------- Delivery Item List								
@@ -1053,9 +1054,9 @@ function marketNext() {
 	
 								}
 								else{
-									//unscheduled_m_client_list+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><a  onClick="marketRetailerNextLV(\''+mClientName+'|'+mClientID+'\')"><font style="font-size:12px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+mClientName+'|'+mClientID+','+mClientCat+'</font></a></li>';
+									unscheduled_m_client_list+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><a  onClick="marketRetailerNextLV(\''+mClientName+'|'+mClientID+'\')"><font style="font-size:12px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+mClientName+'|'+mClientID+','+mClientCat+'</font></a></li>';
 									
-									unscheduled_m_client_list+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><a  onClick="marketRetailerNextLV(\''+mClientName+'|'+mClientID+'\')"><font style="font-size:12px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+mClientName+'|'+mClientID+'</font></a></li>';
+								//	unscheduled_m_client_list+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><a  onClick="marketRetailerNextLV(\''+mClientName+'|'+mClientID+'\')"><font style="font-size:12px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+mClientName+'|'+mClientID+'</font></a></li>';
 								}	
 							}
 						 }
@@ -2337,8 +2338,8 @@ function marketNextCProfile() {
 	
 								}
 								else{
-									//profile_m_client_combo+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><a  onClick="marketRetailerNextCProfileLV(\''+mClientName+'|'+mClientID+'\')"><font style="font-size:12px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+mClientName+'|'+mClientID+','+mClientCat+'</font></a></li>';
-									profile_m_client_combo+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><a  onClick="marketRetailerNextCProfileLV(\''+mClientName+'|'+mClientID+'\')"><font style="font-size:12px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+mClientName+'|'+mClientID+'</font></a></li>';
+									profile_m_client_combo+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><a  onClick="marketRetailerNextCProfileLV(\''+mClientName+'|'+mClientID+'\')"><font style="font-size:12px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+mClientName+'|'+mClientID+','+mClientCat+'</font></a></li>';
+									//profile_m_client_combo+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><a  onClick="marketRetailerNextCProfileLV(\''+mClientName+'|'+mClientID+'\')"><font style="font-size:12px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+mClientName+'|'+mClientID+'</font></a></li>';
 								}	
 							}
 						 }
@@ -5173,8 +5174,8 @@ function getCampaign(){
 		localStorage.campaign_doc_str='';
 	}
 	
-	$('#doctor_campaign_list_tbl').empty();
-	$('#doctor_campaign_list_tbl').append(localStorage.product_tbl_str_doc_campaign).trigger('create');
+	//$('#doctor_campaign_list_tbl').empty();
+	//$('#doctor_campaign_list_tbl').append(localStorage.product_tbl_str_doc_campaign).trigger('create');
 	
 	//$('#doctor_campaign_list_tbl').html(localStorage.product_tbl_str_doc_campaign);
 	
@@ -5349,15 +5350,21 @@ function getDocCampaignData(){
 	var campaign_showList=campaign_show.split('<rd>');
 	var campaign_showListLength=campaign_showList.length;
 	var campaign_show_1='';
+	
+	
 	for (var j=0; j < campaign_showListLength; j++){
 		//campaign_show_1=campaign_show_1+campaign_showList[j]+'</br>'
-		
+		if (j==0){
+			campaign_show_1=campaign_show_1+'<table width="100%" cellspacing="0" border="1" style="border:thin;  border-color:#006600">';
+		}
 		var pname=$("#doc_camp_name"+campaign_showList[j]).val();
-		campaign_show_1=campaign_show_1+pname+'('+campaign_showList[j]+')'+'</br>'
+		campaign_show_1=campaign_show_1+' <tr><td>'+pname+'('+campaign_showList[j]+')'+' </tr></td>'
 		
 		//$("#doc_campaign").html(campaign_show);
 	}
-	
+	if (campaign_show_1!=''){
+		campaign_show_1=campaign_show_1+'</table>';
+	}
 	localStorage.campaign_show_1=campaign_show_1;
 	//alert (campaign_show_1.indexOf('undefined'));
 	if  (campaign_show_1.indexOf('undefined')==-1 ){
@@ -5376,8 +5383,8 @@ function getDoctorGift(){
 	}
 	//localStorage.productGiftStr='';
 	//$("#doctor_gift_list_tbl").html(localStorage.gift_tbl_doc);
-	$('#doctor_gift_list_tbl').empty();
-	$('#doctor_gift_list_tbl').append(localStorage.gift_tbl_doc).trigger('create');
+	//$('#doctor_gift_list_tbl').empty();
+	//$('#doctor_gift_list_tbl').append(localStorage.gift_tbl_doc).trigger('create');
 	
 	//  Set Gift Data==========
 	var gift_show=localStorage.productGiftStr;
@@ -5518,13 +5525,19 @@ function getDocGiftData(){
 		var giftProductsingleList=giftProductsingle.split('<fd>');
 		
 		var pname=$("#doc_gift_name"+giftProductsingleList[0]).val();
-		
-		gift_show_1=gift_show_1+pname+'('+giftProductsingleList[0]+')'+'  --  '+giftProductsingleList[1]+'</br>'
+		if (j==0){
+			gift_show_1=gift_show_1+'<table width="100%" cellspacing="0" border="1" style="border:thin;  border-color:#006600">';
+		}
+		gift_show_1=gift_show_1+'<tr><td  width="90%">'+pname+'('+giftProductsingleList[0]+')'+'</td><td>'+giftProductsingleList[1]+'</td></tr>'
 		
 		//gift_show_1=gift_show_1+gift_showList[j].replace("<fd>","--")+'</br>'
 		
 		//$("#doc_campaign").html(campaign_show);
 	}
+	if (gift_show_1!=''){
+			gift_show_1=gift_show_1+'</table>';
+	}
+	
 	//alert (campaign_show_1);
 	localStorage.gift_show_1=gift_show_1;
 	if  (gift_show_1.indexOf('undefined')==-1 ){
@@ -5551,16 +5564,25 @@ function getDocSampleData(){
 			var sampleProductsingleList=sampleProductsingle.split('<fd>');
 
 			var pname=$("#sample_name"+sampleProductsingleList[0]).val();
-			sample_show_1=sample_show_1+pname+'('+sampleProductsingleList[0]+')'+'  --  '+sampleProductsingleList[1]+'</br>'
 			
-			localStorage.sample_show_1=sample_show_1;
-			if  (sample_show_1.indexOf('undefined')==-1 ){
-				$("#doc_sample").html(localStorage.sample_show_1);
-			}
-			var url = "#page_visit_doc";	
-			$.mobile.navigate(url);	
+				if (j==0){
+					sample_show_1=sample_show_1+'<table width="100%" cellspacing="0" border="1" style="border:thin;  border-color:#006600">';
+				}
+				sample_show_1=sample_show_1+'<tr><td width="90%">'+pname+'('+sampleProductsingleList[0]+')'+'</td><td>'+sampleProductsingleList[1]+'</td></tr>'
+		}
 		
-	}
+		if (sample_show_1!=''){
+				sample_show_1=sample_show_1+'</table>';
+		}
+		
+		localStorage.sample_show_1=sample_show_1;
+		if  (sample_show_1.indexOf('undefined')==-1 ){
+			$("#doc_sample").html(localStorage.sample_show_1);
+		}
+		var url = "#page_visit_doc";	
+		$.mobile.navigate(url);	
+		
+	
 	
 }
 function getDoctorSample(){	
@@ -5568,8 +5590,8 @@ function getDoctorSample(){
 	if ((localStorage.productSampleStr==undefined) || (localStorage.productSampleStr=='undefined')){
 		localStorage.productSampleStr='';
 	}
-	$('#doctor_sample_list_tbl').empty();
-	$('#doctor_sample_list_tbl').append(localStorage.product_tbl_str_doc_sample).trigger('create');
+	//$('#doctor_sample_list_tbl').empty();
+	//$('#doctor_sample_list_tbl').append(localStorage.product_tbl_str_doc_sample).trigger('create');
 	//$("#doctor_sample_list_tbl").html(localStorage.product_tbl_str_doc_sample);
 	//localStorage.productSampleStr='';
 	
@@ -5867,6 +5889,42 @@ function visitSubmit_doc(){
 										localStorage.sample_show_1='';
 										
 										
+										//-------------
+										// Clear Campaign and sample
+											
+											//localStorage.productOrderStr='';
+											var productList=localStorage.productListStr.split('<rd>');
+											var productLength=productList.length;
+											for (var i=0; i < productLength; i++){
+												var productArray2 = productList[i].split('<fd>');
+												var product_id2=productArray2[0];	
+												var product_name2=productArray2[1];
+												$("#sample_qty"+product_id2).val('');
+												
+												
+												var camp_combo="#doc_camp"+product_id2
+												$(camp_combo).attr('checked', false);
+												//alert (product_id2);
+											}	
+										// Clear Gift
+											
+											//localStorage.productOrderStr='';
+											var giftList=localStorage.gift_string.split('<rd>');
+											var giftLength=giftList.length;
+											for (var i=0; i < giftLength; i++){
+												var giftArray2 = giftList[i].split('<fd>');
+												var gift_id2=giftArray2[0];	
+												//var product_name2=giftArray2[1];
+												$("#gift_qty"+gift_id2).val('');
+												
+
+											}	
+											
+											//====================================
+										
+										
+										$("#doc_feedback").val('');
+										
 										//$(".market").html('');
 										$(".visit_client").html('');
 										//--------------------------------------------------------
@@ -5895,6 +5953,7 @@ function visitSubmit_doc(){
 										
 										var url = "#page_confirm_visit_success";	
 										$.mobile.navigate(url);
+										//location.reload();
 																				
 									}else{						
 										$("#errorChkVSubmit").html('Server Error');
@@ -5957,7 +6016,7 @@ function client_catList() {
 	var ob = $("#catCombo");
 	var ob_profile = $("#catCombo_profile");
 	var value="";
-	var text="Category";
+	//var text="Category";
 	
 	//alert (localStorage.clientListStr);
 	
@@ -6175,6 +6234,13 @@ $(document).ready(function(){
 	
 	$("#sch_date").val(localStorage.search_date);
 	
+	
+	
+	
+	//set doctor
+	$('#doctor_campaign_list_tbl').html(localStorage.product_tbl_str_doc_campaign);
+	$("#doctor_sample_list_tbl").html(localStorage.product_tbl_str_doc_sample);
+	$("#doctor_gift_list_tbl").html(localStorage.gift_tbl_doc);
 	
 	
 	//Set total 
@@ -6450,7 +6516,7 @@ $.mobile.document.on( "listviewcreate", "#visit_plan_client_cmb_id-menu", functi
 	}
 	listview.filterable({ input: input });
 })
-.on( "pagebeforeshow pagehide", "#visit_plan_client_cmb_id-dialog", function( e ) {
+.on( "pagebeforeshow pagehide", "#visit_plan_client_cmb_id-dialog", function(  e ) {
 	var form = $( "#visit_plan_client_cmb_id-listbox" ).jqmData( "filter-form" ),
 		placeInDialog = ( e.type === "pagebeforeshow" ),
 		destination = placeInDialog ? $( e.target ).find( ".ui-content" ) : $( "#visit_plan_client_cmb_id-listbox" );

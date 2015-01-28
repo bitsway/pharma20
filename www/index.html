@@ -54,7 +54,7 @@
                 <h3>mReporting</h3>
             </div>
             
-			<img style="width:100%; height:100px"  src="images_2.jpg">
+			<img style="width:100%; height:70px"  src="images_2.jpg">
             <div data-role="content">
 				
 				<div id="myerror" style="color:#C00;">		
@@ -247,10 +247,10 @@
                 </select>-->
                 <!--Client Catagory Combo-->
 				<div id="ret_cat">
-				<input type="hidden" id="catCombo" >
-				<!-- <select id="catCombo" width="60%" data-native-menu="false">
+				<!--<input type="hidden" id="catCombo" >-->
+				 <select id="catCombo" width="60%" data-native-menu="false">
                 <option value="" >Category</option>
-                </select>-->
+                </select>
 				</div>
 				<!--Client Catagory Combo End-->
                 <input id="unschedule_market_combo_id" data-type="search"  placeholder="Search">
@@ -344,10 +344,10 @@
                 </select>-->
                 
               <!-- List Test -------------------->
-			  	 <!--<select id="catCombo_profile" width="60%" data-native-menu="false">
+			  	 <select id="catCombo_profile" width="60%" data-native-menu="false">
                 <option value="" >Category</option>
-                </select>-->
-				 <input id="catCombo_profile" type="hidden" > 
+                </select>
+				<!-- <input id="catCombo_profile" type="hidden" >--> 
 				<!--Client Catagory Combo End-->
              <!--   <input id="unschedule_market_combo_id" data-type="search"  placeholder="Search">
 				
@@ -518,7 +518,7 @@
             </div>
 			
             <div data-role="content">
-				<div id="myerror" style="color:#C00"></div>
+				<div id="myerror" style="color:#C00">   </div>
 				<ul data-inset="true"  data-role="listview">
 					<li >
 						<!--<div><b>Visit Type & Date:</b><span class="visit_type"></span>&nbsp;,&nbsp;<span class="s_date"></span></div>	-->					
@@ -560,14 +560,19 @@
 		 
 		 
 		 <div data-theme="c" data-role="page" id="page_doctor_campaign">
-            <div data-theme="c" data-role="header" data-position="fixed">
+            <div data-theme="c" data-role="header" data-position="fixed" data-tap-toggle="false">
 			<!--<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext"><img src="menu.png"></a>-->
             <!--<a data-role="button" data-rel="back"  data-icon="arrow-l" data-iconpos="left" class="ui-btn-right">Back</a>-->
                <!-- <h3>Order</h3>-->
                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr>
                     <!--<td align="left"><a data-role="button" href="#page_visit"  ><img src="back.png"></a></td>-->
-                    <td width="70%"><input type="text" data-iconpos="right" name="campaign_combo_id" id="campaign_combo_id"  ><!--<input type="text" data-iconpos="right" name="item_search_doctor_campaign" id="item_search_doctor_campaign"  >--></td>
+                    <td width="70%">
+					<form class="ui-filterable">
+					<input type="text" data-iconpos="right" name="campaign_combo_id" id="campaign_combo_id" data-type="search"  >
+					</form>
+					
+					<!--<input type="text" data-iconpos="right" name="item_search_doctor_campaign" id="item_search_doctor_campaign"  >--></td>
                     <td width="10%px"><!--<a data-role="button" onClick="search_item_doctor_campaign();" style="height:15px" ><img src="search.png"></a>--></td>
                     <td align="right"><a style="height:20px; width:27px" data-role="button" onClick="getDocCampaignData();" ><img src="done.png"></a>&nbsp;&nbsp;</td>
                   </tr>
@@ -623,14 +628,19 @@
          
     <!--=====================Doctor Gift Page==================-->
 		<div data-theme="c" data-role="page" id="page_doctor_gift">
-            <div data-theme="c" data-role="header" data-position="fixed">
+            <div data-theme="c" data-role="header" data-position="fixed" data-tap-toggle="false">
 			<!--<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext"><img src="menu.png"></a>-->
             <!--<a data-role="button" data-rel="back"  data-icon="arrow-l" data-iconpos="left" class="ui-btn-right">Back</a>-->
                <!-- <h3>Order</h3>-->
                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr>
                     <!--<td align="left"><a data-role="button" href="#page_visit"  ><img src="back.png"></a></td>-->
-                    <td width="70%"><input type="text" data-iconpos="right" name="gift_combo_id" id="gift_combo_id"  ><!--<input type="text" data-iconpos="right" name="item_search_doctor_campaign" id="item_search_doctor_campaign"  >--></td>
+                    <td width="70%">
+					<form class="ui-filterable">
+					<input type="text" data-iconpos="right" name="gift_combo_id" id="gift_combo_id" data-type="search"  >
+					</form>
+					
+					<!--<input type="text" data-iconpos="right" name="gift_combo_id" id="gift_combo_id"  >--><!--<input type="text" data-iconpos="right" name="item_search_doctor_campaign" id="item_search_doctor_campaign"  >--></td>
                     <td width="10%px"><!--<a data-role="button" onClick="search_item_doctor_campaign();" style="height:15px" ><img src="search.png"></a>--></td>
                     <td align="right"><a style="height:20px; width:27px" data-role="button" onClick="getDocGiftData();" ><img src="done.png"></a>&nbsp;&nbsp;</td>
                   </tr>
@@ -684,14 +694,19 @@
          
          <!--=====================Doctor Gift Page==================-->
 		<div data-theme="c" data-role="page" id="page_doctor_sample">
-            <div data-theme="c" data-role="header" data-position="fixed">
+            <div data-theme="c" data-role="header" data-position="fixed" data-tap-toggle="false">
 			<!--<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext"><img src="menu.png"></a>-->
             <!--<a data-role="button" data-rel="back"  data-icon="arrow-l" data-iconpos="left" class="ui-btn-right">Back</a>-->
                <!-- <h3>Order</h3>-->
                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr>
                     <!--<td align="left"><a data-role="button" href="#page_visit"  ><img src="back.png"></a></td>-->
-                    <td width="70%"><input type="text" data-iconpos="right" name="sample_combo_id" id="sample_combo_id"  ><!--<input type="text" data-iconpos="right" name="item_search_doctor_campaign" id="item_search_doctor_campaign"  >--></td>
+                    <td width="70%">
+					<form class="ui-filterable">
+					<input type="text" data-iconpos="right" name="sample_combo_id" id="sample_combo_id" data-type="search"  >
+					</form>
+					
+					<!--<input type="text" data-iconpos="right" name="sample_combo_id" id="sample_combo_id"  >--><!--<input type="text" data-iconpos="right" name="item_search_doctor_campaign" id="item_search_doctor_campaign"  >--></td>
                     <td width="10%px"><!--<a data-role="button" onClick="search_item_doctor_campaign();" style="height:15px" ><img src="search.png"></a>--></td>
                     <td align="right"><a style="height:20px; width:27px" data-role="button" onClick="getDocSampleData();" ><img src="done.png"></a>&nbsp;&nbsp;</td>
                   </tr>
@@ -711,7 +726,7 @@
 				
 				<br>
                 <br>
-				<div id="doctor_sample_list_tbl">abc</div>
+				<div id="doctor_sample_list_tbl"></div>
 				
                 <br>
                 <br>
@@ -1027,7 +1042,7 @@
                     <!--<td align="left"><a data-role="button" href="#page_visit"  ><img src="back.png"></a></td>-->
                     <td width="50%"> 
 					<form class="ui-filterable">
-					<input id="item_combo_id" data-type="search"  placeholder="Search"  </form></td>
+					<input id="item_combo_id" data-type="search"  placeholder="Search">  </form></td>
                     <td width="10%px"></td>
                    
 					 <td align="right"><a data-role="button" onClick="getOrderData()" ><img src="next.png"></a>&nbsp;&nbsp;</td>
@@ -1300,7 +1315,7 @@
 		
      <!--=====================Campaign Page==================-->
 		<div data-theme="c" data-role="page" id="page_campaign">
-            <div data-theme="c" data-role="header" data-position="fixed">			
+            <div data-theme="c" data-role="header" data-position="fixed" >			
             <a data-role="button" data-rel="back"  data-iconpos="left" class="ui-btn-right"><img src="back.png"></a>
                 <h3>Campaign</h3>
             </div>
