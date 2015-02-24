@@ -255,7 +255,7 @@
 				<!--Client Catagory Combo End-->
                 <input id="unschedule_market_combo_id" data-type="search"  placeholder="Search">
 				
-                <ul id="unschedule_market_combo_id_lv" data-role="listview" data-filter="true" data-input="#unschedule_market_combo_id" data-inset="true">
+                <ul id="unschedule_market_combo_id_lv" data-role="listview" data-filter="true" data-input="#unschedule_market_combo_id" data-inset="true" >
                 </ul>
                 
                 
@@ -307,7 +307,7 @@
 				
 				
                 <input id="unscheduled_m_client_combo_id" data-type="search" placeholder="Search"> 				
-                <ul id="unscheduled_m_client_combo_id_lv" data-role="listview" data-filter="true" data-input="#unscheduled_m_client_combo_id" data-inset="true">
+                <ul id="unscheduled_m_client_combo_id_lv" data-role="listview" data-filter="true" data-input="#unscheduled_m_client_combo_id" data-inset="true" >
                 </ul>
                 
 				<!--<a data-role="button" id="btn_unschedule_market_ret" onClick="marketRetailerNext();">Next</a>-->
@@ -485,13 +485,7 @@
 				<div><b></b><span class="visit_client" style="font-weight:bold;font-size:24px;color:#009191"></span></div>
 				
 				
-               <!-- <ul data-inset="true"  data-role="listview" class="ui-nodisc-icon ui-alt-icon">-->
-					<!--<li style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:medium"><a data-role="button" class="ui-btn" style="text-align:center" onClick="getMarketInfo();" >Market Info</a></li>-->
-                   <!-- <li style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:medium;"  ><a data-role="button"  class="ui-btn" style="text-align:center; " onClick="getOrder();" ><img src="order.png"></a></li>-->
-                    <!--<li style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:medium"><a data-role="button" class="ui-btn" style="text-align:center" onClick="getMarchandizing();" >Marchandizing</a></li>-->
-                    <!--<li style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:medium" ><a data-role="button" class="ui-btn" style="text-align:center" onClick="getVisitCampaign();" >Market Feedback</a></li>-->
-                    <!--<li style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:medium" ><a data-role="button" class="ui-btn" style="text-align:center" onClick="getVisitReportPage();">Reports</a></li>-->
-              <!--  </ul>-->
+
                  <a data-role="button"  class="ui-btn" style="text-align:center; " onClick="getOrder();" ><img src="order.png"></a>
 				<br/>
 				<a data-role="button" href="#page_confirm" data-icon="arrow-r" data-iconpos="right" >Next</a>
@@ -531,13 +525,33 @@
                     <li style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:medium"><a data-role="button" class="ui-btn" style="text-align:center" onClick="getCampaign();" >Campaign</a></li>
                     
                     <div id="doc_campaign"></div>
+					</br></br>
                     <li style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:medium"><a data-role="button" class="ui-btn" style="text-align:center" onClick="getDoctorGift();" >Gift</a></li>
-                    <div id="doc_gift"></div>
-                    
+					</br>
+					<div id="doc_gift"></div>
+					</br></br>
+                    <li style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:medium"><a data-role="button" class="ui-btn" style="text-align:center" onClick="getDoctorppm();" >PPM</a></li>
+					</br>
+					
+                    <div id="doc_ppm"></div>
+                    </br></br>
                     <li style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:medium" ><a data-role="button" class="ui-btn" style="text-align:center" onClick="getDoctorSample();" >Sample</a></li>
                     <!--<li style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:medium" ><a data-role="button" class="ui-btn" style="text-align:center" onClick="getVisitReportPage();">Reports</a></li>-->
+					</br></br>
                     <div id="doc_sample"></div>
+					</br>
                 </ul>
+				
+				<table width="100%" border="0" cellpadding="0" cellspacing="0">
+					  <tr>
+						<td>Visited With</td>
+						<td width="30%"> <label><input type="radio" name="v_with" id="v_with" value="self"> Self</label></td>
+						<td width="30%"> <label><input type="radio" name="v_with" id="v_with"  value="supervisor">Supervisor</label></td>
+					  </tr>
+			  </table>
+
+		
+                </form>
                 <textarea name="doc_feedback"  id="doc_feedback" rows="5" placeholder="Feedback/Note"></textarea>
                 
                 
@@ -591,7 +605,7 @@
 				</ul>
 				<br>
                 <br>
-				<div id="doctor_campaign_list_tbl">abc</div>
+				<div id="doctor_campaign_list_tbl"></div>
 				
                 <br>
                 <br>
@@ -692,7 +706,76 @@
 			
 		 </div><!--/page-->
          
-         <!--=====================Doctor Gift Page==================-->
+         <!--=====================Doctor PPM Page Start==================-->
+		 
+		<div data-theme="c" data-role="page" id="page_doctor_ppm">
+            <div data-theme="c" data-role="header" data-position="fixed" data-tap-toggle="false">
+			<!--<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext"><img src="menu.png"></a>-->
+            <!--<a data-role="button" data-rel="back"  data-icon="arrow-l" data-iconpos="left" class="ui-btn-right">Back</a>-->
+               <!-- <h3>Order</h3>-->
+                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <!--<td align="left"><a data-role="button" href="#page_visit"  ><img src="back.png"></a></td>-->
+                    <td width="70%">
+					<form class="ui-filterable">
+					<input type="text" data-iconpos="right" name="ppm_combo_id" id="ppm_combo_id" data-type="search"  >
+					</form>
+					
+					<!--<input type="text" data-iconpos="right" name="ppm_combo_id" id="ppm_combo_id"  >--><!--<input type="text" data-iconpos="right" name="item_search_doctor_campaign" id="item_search_doctor_campaign"  >--></td>
+                    <td width="10%px"><!--<a data-role="button" onClick="search_item_doctor_campaign();" style="height:15px" ><img src="search.png"></a>--></td>
+                    <td align="right"><a style="height:20px; width:27px" data-role="button" onClick="getDocppmData();" ><img src="done.png"></a>&nbsp;&nbsp;</td>
+                  </tr>
+                </table>
+            </div>
+			
+            <div data-role="content" style="overflow:scroll">
+				<div id="myerror_doctor_ppm" style="color:#C00"></div>
+				<ul data-inset="true"  data-role="listview">
+					<li>
+						<div><b>Visit Type & Date:</b><span class="visit_type"></span>&nbsp;&nbsp;<span class="s_date"></span></div>						
+						<div><b>Market :</b><span class="market"></span></div>
+                        <div><b>Distributor :</b><span class="visit_distributor"></span></div>
+                        <div><b>Doctor :</b><span class="visit_client" style="font-weight:bold"></span></div>                        
+					</li>					
+				</ul>
+				<br>
+                <br>
+				<div id="doctor_ppm_list_tbl">abc</div>
+				
+                <br>
+                <br>
+			  
+			
+            <br>                        
+            <br>
+            <br>            
+			<br>
+            <br>                        
+            <br>
+            <br>            
+			<br>
+            <br>                        
+            <br>
+            <br>            
+			<br>
+            <br>                        
+            <br>
+            <br>            
+			<br>
+			
+            </div><!--/cont-->
+			
+			
+			<div data-theme="c" data-role="footer" data-position="fixed" align="center">
+            
+           &nbsp; <a data-role="button" href="#page_visit_doc"  ><img src="back.png"></a>
+            </div>
+			
+		 </div><!--/page-->
+        
+		<!-- ==========================Doctor ppm end====================-->
+		
+		
 		<div data-theme="c" data-role="page" id="page_doctor_sample">
             <div data-theme="c" data-role="header" data-position="fixed" data-tap-toggle="false">
 			<!--<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext"><img src="menu.png"></a>-->
@@ -1895,71 +1978,41 @@
             
 		 </div><!--/page-->
 <!-- =====================end Visit Repot ================== -->
-	
-    <!-- ===================== Report- Region================== -->
-    	
-        <div data-theme="c" data-role="page" id="page_report">
+	<div data-theme="c" data-role="page" id="page_reports">
             <div data-theme="c" data-role="header" data-position="fixed">
 			<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext" onClick="clear_mgs()"><img src="menu.png"></a>
             <a data-role="button" data-rel="back"  data-iconpos="left" class="ui-btn-right"><img src="back.png"></a>
-                <h3>Region-Report</h3>
+                <h3>Reports</h3>
             </div>
 			
-            <div data-role="content">				
-				<div id="err_region_rpt" style="color:#C00"></div>
+            <div data-role="content">
+			
+				<div id="myerror" style="color:#C00"></div>               
+                              
+
+
+				<a data-role="button" href="#page_reports_order">Order</a>
+				<a data-role="button" href="#page_reports_dcr" >DCR</a>
 				
-                <select name="rpt_region_cmb_id" id="rpt_region_cmb_id" data-native-menu="false">							
-                    <option value="0" >Select Region</option>
-                </select>
-				
-                <select name="rpt_region_month_cmb_id" id="rpt_region_month_cmb_id" data-native-menu="false">
-					 <option value="">Month</option>
-					 <option value="01">Jan</option>
-					 <option value="02">Feb</option>
-					 <option value="03">Mar</option>
-					 <option value="04">Apr</option>
-					 <option value="05">May</option>
-					 <option value="06">Jun</option>
-					 <option value="07">Jul</option>
-					 <option value="08">Aug</option>
-					 <option value="09">Sep</option>
-					 <option value="10">Oct</option>
-					 <option value="11">Nov</option>
-					 <option value="12">Dec</option>
-				</select>
-                
-                <br/><br/>
-                <a data-role="button" onClick="regionOrderReport();">Order</a>
-                <a data-role="button" onClick="regionSalesConfReport();">Sales Confirmed</a>
-                <a data-role="button" onClick="regionVisitSummaryReport();">Visit Summary</a>
-				<a data-role="button" onClick="regionTarVsAchReport();" >Target Vs Achievement</a>
-				<a data-role="button" onClick="regionTodaySummReport();">Today Summary</a>
-                
-				<br/>
-				
-				<br>
-                <div align="center"><img id="wait_image_region_report" width="50px;" src="loading.gif" alt=""></div>
-                
-                <br>                
-                <table id="tbl_region_show_report"  border="1" class="ui-body-d ui-shadow table-stripe ui-responsive" data-role="table" data-theme="d"  data-mode="display:none" style="cell-spacing:0px; width:100%; border-bottom:solid; border-bottom-color:#999"></table>
-                 
-                 <br>
-                 <br>
-                 <br>
-                 <br>
-                 
-                 
-                 
             </div><!--/cont-->
+			
+			<div data-theme="c" data-role="footer" data-position="fixed">
+			
+			</div>
+			
+		 </div><!--/page-->
 		
-		</div><!--/page-->
 		
+		
+		
+		
+		<!--==============Order report===============-->
         
-		<div data-theme="c" data-role="page" id="page_rpt">
+		<div data-theme="c" data-role="page" id="page_reports_order">
             <div data-theme="c" data-role="header" data-position="fixed">
 			<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext" onClick="clear_mgs()"><img src="menu.png"></a>
             <a data-role="button" data-rel="back"  data-iconpos="left" class="ui-btn-right"><img src="back.png"></a>
-                <h3>Schsduled Chemist</h3>
+                <h3>Reports</h3>
             </div>
 			
             <div data-role="content">
@@ -1967,47 +2020,124 @@
 				<div id="myerror" style="color:#C00"></div>               
                               
 				
-				<select name="se_name" id="se_name" data-native-menu="false">
-					<option value="">Zone/Region/BP</option>
-					<option value="1">Zone One</option>
-					<option value="2">Zone Two</option>
-					<option value="3">Zone Three</option>
-					<option value="4">Zone Four</option>
+				<!--<select name="se_market" id="se_market" data-native-menu="false">
 				</select>
 				
-				<select name="" id="" data-native-menu="false">
-					<option value="">Market</option>
-					<option value="1">Basundhara Road</option>
-					<option value="2">Kuril Road</option>
-					<option value="3">Natun Bazar</option>
+				
+				<select name="se_item" id="se_item" data-native-menu="false">
 				</select>
 				
-				<select name="" id="" data-native-menu="false">
-					<option value="">Chemist</option>
-					<option value="1">ABC Traders</option>
-					<option value="2">Hasan Traders</option>
-					<option value="3">janta Traders</option>
-				</select>
+				<select name="se_mpo" id="se_mpo" data-native-menu="false">
+				</select>-->
 				
-				<select name="" id="" data-native-menu="false">
-					 <option value="">Month</option>
-					 <option value="01">01</option>
-					 <option value="02">02</option>
-					 <option value="03">03</option>
-					 <option value="04">04</option>
-					 <option value="05">05</option>
-					 <option value="06">06</option>
-					 <option value="07">07</option>
-					 <option value="08">08</option>
-					 <option value="09">09</option>
-					 <option value="10">10</option>
-					 <option value="11">11</option>
-					 <option value="12">12</option>
-				</select>
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+
+<table width="100%" border="0">
+   <tr>
+    <td>Market: </td>
+    <td><input id="se_market" name="se_market" type="text" placeholder="Market"  ></td>
+    <td>&nbsp;&nbsp;Item: </td>
+    <td><input id="se_item" name="se_item" type="text" placeholder="Item"></td>
+  </tr>
+
+ <tr>
+    <td>Rep: </td>
+    <td><input id="se_mpo" name="se_mpo" type="text" placeholder="Rep"></td>
+    <td> </td>
+    <td></td>
+  </tr>	
+
+
+  <tr>
+    <td>From &nbsp;</td>
+    <td><input id="date_from" name="date_from" type="date" data-role="date" ></td>
+    <td>&nbsp;&nbsp;To &nbsp;</td>
+    <td><input id="date_to" name="date_to" type="date" data-role="date" ></td>
+  </tr>
+</table>
+
+				 
+				 
 				
 				<br/>
-				<a data-role="button" href="#page_tar_ach" >Target & Achievement</a>
-				<a data-role="button" href="#page_today_st" >Status Today</a>
+				<a data-role="button" onClick="s_order_summary_report();">Sales Call and Order Summary</a>
+				<a data-role="button" onClick="s_order_detail_report();" >Sales Call and Order Detail</a>
+				<br/>
+			
+            </div><!--/cont-->
+			
+			<div data-theme="c" data-role="footer" data-position="fixed">
+			
+			</div>
+			
+		 </div><!--/page-->
+		 
+		 
+		 
+		 
+		 <!--==============DCR report===============-->
+        
+		<div data-theme="c" data-role="page" id="page_reports_dcr">
+            <div data-theme="c" data-role="header" data-position="fixed">
+			<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext" onClick="clear_mgs()"><img src="menu.png"></a>
+            <a data-role="button" data-rel="back"  data-iconpos="left" class="ui-btn-right"><img src="back.png"></a>
+                <h3>DCR Reports</h3>
+            </div>
+			
+            <div data-role="content">
+			
+				<div id="myerror" style="color:#C00"></div>               
+                              
+				
+				<!--<select name="se_market" id="se_market" data-native-menu="false">
+				</select>
+				
+				
+				<select name="se_item" id="se_item" data-native-menu="false">
+				</select>
+				
+				<select name="se_mpo" id="se_mpo" data-native-menu="false">
+				</select>-->
+				
+
+					<table width="100%" border="0">
+					   <tr>
+						<td>Market: </td>
+						<td><input id="se_market_doc" name="se_market_doc" type="text" placeholder="Market"  ></td>
+						
+						<td>Rep: </td>
+						<td><input id="se_mpo_doc" name="se_mpo_doc" type="text" placeholder="Rep">
+						
+						<input id="se_item_doc" name="se_item_doc" type="hidden" placeholder="Item">
+						</td>
+						
+					  </tr>	
+					
+					
+					  <tr>
+						<td>From &nbsp;</td>
+						<td><input id="date_from_doc" name="date_from_doc" type="date" data-role="date" ></td>
+						<td>To &nbsp;</td>
+						<td><input id="date_to_doc" name="date_to_doc" type="date" data-role="date" ></td>
+					  </tr>
+					</table>
+
+				 
+				 
+				
+			
+				<br/>
+				<a data-role="button" onClick="summary_report_doctor();" >Doctor Call Summary</a>
+				<a data-role="button" onClick="detail_report_doctor()" >Doctor Call Detail</a>
             </div><!--/cont-->
 			
 			<div data-theme="c" data-role="footer" data-position="fixed">
@@ -2016,34 +2146,146 @@
 			
 		 </div><!--/page-->
 
-<!-- ===================== target & achievement Page================== -->
-		<div data-theme="c" data-role="page" id="page_tar_ach">
+<!--==================page_report==================================-->
+
+		<div data-theme="c" data-role="page" id="page_sc_order_summary_report">
             <div data-theme="c" data-role="header" data-position="fixed">
 			<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext" onClick="clear_mgs()"><img src="menu.png"></a>
             <a data-role="button" data-rel="back"  data-iconpos="left" class="ui-btn-right"><img src="back.png"></a>
-                <h3>Target & Achievement</h3>
+                <h3><div id="report_header"> Sales Call and Order Summary</div></h3>
             </div>
 			
             <div data-role="content">			
-				<div id="myerror" style="color:#C00"></div>               
+				<div id="myerror_s_report" style="color:#C00"></div>               
 				<ul data-inset="true" data-role="listview">
-					<li style="background-color:#F2F2F2;">ABC Traders</li>
+					<li style="background-color:#F2F2F2;"></li>
 					<li>
-						<p>Year : 2014</p>
-						<p>Month : Jun</p>									
+						
+						<table width="100%" border="0" cellpadding="0" cellspacing="0">
+							  <tr>
+								<td><div id="report_market" >  </div></td>
+							
+								<td><div id="report_item" >  </div></td>
+							
+								<td><div id="report_mpo">  </div></td>
+							
+							  </tr>
+							  <tr>
+								
+								<td><div id="date_f"> </div></td>
+								
+								<td> <div id="date_t">  </div></td>
+								<td></td>
+								
+							  </tr>
+							</table>
+						
+						<!--<p>Market :<div id="report_market">  </div></p>
+						<p>Item :<div id="report_item">  </div></p>
+						<p>MPO :<div id="report_mpo">  </div></p>
+						<p>DateFrom :<div id="date_f">  </div></p>
+						<p>DateTo : <div id="date_t">  </div></p>	-->								
 					</li>
 					<li>
-						<p>Target:100000 BDT		</p>
-						<p>Order:50000 BDT		</p>
-						<p>Sales/Achievement: 50000 BDT </p>						
+						<table width="100%" border="0" cellpadding="0" cellspacing="0">
+							  <tr>
+								<!--<td>Sales Call:</td>-->
+								<td><div id="sales_call">  </div></td>
+								<!--<td>Order Count:</td>-->
+								<td><div id="order_count">  </div></td>
+								<!--<td>Order Value:</td>-->
+								<td><div id="order_value">  </div></td>
+							  </tr>
+							</table>
+<!--<p>Sales Call: <div id="sales_call">  </div></p>
+						<p>Order Count: <div id="order_count">  </div></p>
+						<p>Order Value: <div id="order_value">  </div></p>		-->				
 					</li>
+						
 					<li>
-						<p>Schedule Visit &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:5</p>
-						<p>Visit &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:4</p>
-						<p>Scheduled Visit &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:3</p>
-						<p>Unscheduled Visit &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:2 </p>									
+					<div id="rep_detail" style="color:#000066"></div>
 					</li>						
 				</ul>
+				
+				
+				
+				
+				
+            </div><!--/cont-->
+			
+			<div data-theme="c" data-role="footer" data-position="fixed">
+			
+			</div>
+			
+		 </div><!--/page-->
+<!--==================page_report Doctor==================================-->
+
+		<div data-theme="c" data-role="page" id="page_report_doctor">
+            <div data-theme="c" data-role="header" data-position="fixed">
+			<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext" onClick="clear_mgs()"><img src="menu.png"></a>
+            <a data-role="button" data-rel="back"  data-iconpos="left" class="ui-btn-right"><img src="back.png"></a>
+                <h3><div id="report_header"> Doctor Visit Summary</div></h3>
+            </div>
+			
+            <div data-role="content">			
+				<div id="myerror_s_report_doctor" style="color:#C00"></div>               
+				<ul data-inset="true" data-role="listview">
+					<li style="background-color:#F2F2F2;"></li>
+					<li>
+						
+						<table width="100%" border="0" cellpadding="0" cellspacing="0">
+							  <tr>
+								<td><div id="report_market_doctor" >  </div></td>
+							
+														
+								<td><div id="report_mpo_doctor">  </div></td>
+							
+							  </tr>
+							  <tr>
+								
+								<td><div id="date_f_doctor"> </div></td>
+								
+								<td> <div id="date_t_doctor">  </div></td>
+								<td></td>
+								
+							  </tr>
+							</table>
+						
+						<!--<p>Market :<div id="report_market">  </div></p>
+						<p>Item :<div id="report_item">  </div></p>
+						<p>MPO :<div id="report_mpo">  </div></p>
+						<p>DateFrom :<div id="date_f">  </div></p>
+						<p>DateTo : <div id="date_t">  </div></p>	-->								
+					</li>
+					<li>
+						<table width="100%" border="0" cellpadding="0" cellspacing="0">
+							  <tr>
+								
+								<td><div id="visit_count_doctor">  </div></td>
+								
+								<td><div id="visit_withAtt_doctor">  </div></td>
+								
+								<td><div id="visit_withoutAtt_doctor">  </div></td>
+							  </tr>
+							</table>
+<!--<p>Sales Call: <div id="sales_call">  </div></p>
+						<p>Order Count: <div id="order_count">  </div></p>
+						<p>Order Value: <div id="order_value">  </div></p>		-->				
+					</li>
+						
+					<li>
+					<table width="100%" border="0" cellpadding="0" cellspacing="0">
+					  <tr>
+						<td><div id="rep_detail_doctor" style="color:#000066; font-size:10px"></div></td>
+					  </tr>
+					</table>
+
+					</li>						
+				</ul>
+				
+				
+				
+				
 				
             </div><!--/cont-->
 			
