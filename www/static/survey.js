@@ -5188,7 +5188,7 @@ function marketRetailerNext_doc() {
 
 		var url = "#page_visit_doc";
 		$.mobile.navigate(url);
-		location.reload();
+		//location.reload();
 							
 			
 	
