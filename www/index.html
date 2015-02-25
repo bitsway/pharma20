@@ -54,7 +54,7 @@
                 <h3>mReporting</h3>
             </div>
             
-			<img style="width:100%; height:70px"  src="images_2.jpg">
+			<img style="width:100%; height:50px"  src="images_2.jpg">
             <div data-role="content">
 				
 				<div id="myerror" style="color:#C00;">		
@@ -134,9 +134,9 @@
             <div data-role="content">
             	<div id="error_login" style="color:#C00"></div>                
                     <form>		
-						<input name="cid" id="cid"  type="text" placeholder="CID" value="NOVELTA">			
-                        <input name="user_id" id="user_id"   type="text" placeholder="User ID" value="SP0003">
-                        <input type="number" name="user_pass" id="user_pass"  placeholder="Password" value="8890">
+						<input name="cid" id="cid"  type="text" placeholder="CID" value="">			
+                        <input name="user_id" id="user_id"   type="text" placeholder="User ID" value="">
+                        <input type="number" name="user_pass" id="user_pass"  placeholder="Password" value="">
                     </form>						
 				
 				<a data-role="button" id="loginButton" onClick="check_user();" >Sync</a>
@@ -144,13 +144,14 @@
                                 
                 <br><br><br><br><br><br><br><br><br><br>
                 
-                <input name="clear_auth_check" id="clear_auth_check" data-mini="true" type="checkbox" value="Yes">
+                <!--<input name="clear_auth_check" id="clear_auth_check" data-mini="true" type="checkbox" value="Yes">
                 <label for="clear_auth_check">Confirm Clear Authorization</label>
                 
-                <a data-role="button" onClick="clear_autho();" >Clear Authorization</a>
+                <a data-role="button" onClick="clear_autho();" >Clear Authorization</a>-->
+				
                 <!--<a onClick="clear_autho()" href="#login">Clear Authorization</a>    -->          
                 <br><br><br><br><br><br>
-                       
+                <div  style="color:#CCCCCC"    align="right">build201502251a</div>    
             </div>
 			
         <!-- ==========footer====== -->	
@@ -180,7 +181,8 @@
 				<br/>			
 				<br/>
 				
-                
+
+
                 
             </div><!--/cont-->
 			
@@ -525,19 +527,20 @@
                     <li style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:medium"><a data-role="button" class="ui-btn" style="text-align:center" onClick="getCampaign();" >Campaign</a></li>
                     
                     <div id="doc_campaign"></div>
-					</br></br>
+					
+					<!--</br>-->
                     <li style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:medium"><a data-role="button" class="ui-btn" style="text-align:center" onClick="getDoctorGift();" >Gift</a></li>
-					</br>
+					<!--</br>-->
 					<div id="doc_gift"></div>
-					</br></br>
+					<!--</br></br>-->
                     <li style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:medium"><a data-role="button" class="ui-btn" style="text-align:center" onClick="getDoctorppm();" >PPM</a></li>
-					</br>
+					<!--</br>-->
 					
                     <div id="doc_ppm"></div>
-                    </br></br>
+                    <!--</br></br>-->
                     <li style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:medium" ><a data-role="button" class="ui-btn" style="text-align:center" onClick="getDoctorSample();" >Sample</a></li>
                     <!--<li style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:medium" ><a data-role="button" class="ui-btn" style="text-align:center" onClick="getVisitReportPage();">Reports</a></li>-->
-					</br></br>
+					<!--</br></br>-->
                     <div id="doc_sample"></div>
 					</br>
                 </ul>
@@ -740,7 +743,7 @@
 				</ul>
 				<br>
                 <br>
-				<div id="doctor_ppm_list_tbl">abc</div>
+				<div id="doctor_ppm_list_tbl"></div>
 				
                 <br>
                 <br>
@@ -1991,8 +1994,8 @@
                               
 
 
-				<a data-role="button" href="#page_reports_order">Order</a>
-				<a data-role="button" href="#page_reports_dcr" >DCR</a>
+				<!--<a data-role="button" href="#page_reports_order">Order</a>-->
+				<!--<a data-role="button" href="#page_reports_dcr" >DCR</a>-->
 				
             </div><!--/cont-->
 			
